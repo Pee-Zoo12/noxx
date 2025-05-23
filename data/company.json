@@ -1,0 +1,40 @@
+{
+    "companies": [
+        {
+            "companyID": "NOX001",
+            "name": "NOX Clothing",
+            "registrationNumber": "REG123456",
+            "taxID": "TAX123456",
+            "address": {
+                "street": "123 Fashion Street",
+                "city": "Manila",
+                "state": "Metro Manila",
+                "country": "Philippines",
+                "postalCode": "1000"
+            },
+            "phone": "+63 123 456 7890",
+            "email": "info@noxclothing.com",
+            "website": "www.noxclothing.com",
+            "logo": "assets/images/noxlogo.png",
+            "foundingDate": "2023",
+            "businessType": "Retail",
+            "industry": "Fashion",
+            "settings": {
+                "currency": "PHP",
+                "timezone": "Asia/Manila",
+                "dateFormat": "Y-m-d",
+                "timeFormat": "H:i:s",
+                "taxRate": 12,
+                "shippingEnabled": true,
+                "maintenanceMode": false
+            },
+            "socialMedia": {
+                "facebook": "https://www.facebook.com/share/1GCEvjoCDM/?mibextid=wwXI",
+                "instagram": "https://www.instagram.com/_nox.apparel?igsh=MTJ6ZmJxZ29ybWIwbg=="
+            },
+            "bankAccounts": [],
+            "brandIdentity": "Your premier destination for fashion and style.",
+            "missionStatement": "To provide high-quality, trendy clothing at affordable prices while ensuring excellent customer service."
+        }
+    ]
+} 

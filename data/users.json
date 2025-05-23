@@ -1,0 +1,34 @@
+{
+    "customers": [
+        {
+            "userID": "USR1747924699",
+            "username": "Payso ",
+            "email": "pyso@gmail.com",
+            "password": "$2y$10$h9YSx9GUXTy476.8Fl7UBOV5uQcMmacB5omJbp9I\/cFjPRobrHDKS",
+            "birthday": "2004-10-03",
+            "sex": "female",
+            "address": "dd",
+            "phone": "1229850988"
+        },
+        {
+            "userID": "USR1747927441",
+            "username": "Ragsikk",
+            "email": "ragsik19@gmail.com",
+            "password": "$2y$10$woHoTGU4PGOPgWhn3owalOjNy7cMrnhM7fxrWi6DKhWSry8Afq2TS",
+            "birthday": "2004-10-03",
+            "sex": "female",
+            "address": "3333",
+            "phone": "3333"
+        },
+        {
+            "userID": "USR1747929123",
+            "username": "Pearly ",
+            "email": "pearlyjaleco19@gmail.com",
+            "password": "$2y$10$JJH14Qfy1CGBKmSrH\/y8mOrAKaVTDrJ6nxiEnhiJWJdrTMqGU98hW",
+            "birthday": "",
+            "sex": "",
+            "address": "22222222",
+            "phone": "222222222"
+        }
+    ]
+}

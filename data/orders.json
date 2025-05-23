@@ -1,0 +1,814 @@
+{
+    "0": {
+        "orderID": "681f2a445457b051a29a88c536b5d",
+        "customer": "681e197b8102a7e2274507e8b34dc",
+        "items": [],
+        "subtotal": 1499.99,
+        "shippingCost": 50,
+        "total": 1549.99,
+        "orderDate": "2025-05-10 12:28:20",
+        "status": "pending",
+        "paymentStatus": "pending",
+        "paymentMethod": null
+    },
+    "1": {
+        "orderID": "681f2ae4a80dad8fbfdee0dd5193e",
+        "customer": "681e197b8102a7e2274507e8b34dc",
+        "items": [],
+        "subtotal": 0,
+        "shippingCost": 50,
+        "total": 50,
+        "orderDate": "2025-05-10 12:31:00",
+        "status": "pending",
+        "paymentStatus": "pending",
+        "paymentMethod": null
+    },
+    "2": {
+        "orderID": "681f2b9c906e7d7fd307ac28f1c3c",
+        "customer": "681e197b8102a7e2274507e8b34dc",
+        "items": [],
+        "subtotal": 0,
+        "shippingCost": 50,
+        "total": 50,
+        "orderDate": "2025-05-10 12:34:04",
+        "status": "pending",
+        "paymentStatus": "pending",
+        "paymentMethod": null
+    },
+    "3": {
+        "orderID": "681f2bcf5c679f9a0ea705e9634d5",
+        "customer": "681e197b8102a7e2274507e8b34dc",
+        "items": [],
+        "subtotal": 1499.99,
+        "shippingCost": 50,
+        "total": 1549.99,
+        "orderDate": "2025-05-10 12:34:55",
+        "status": "pending",
+        "paymentStatus": "pending",
+        "paymentMethod": null
+    },
+    "4": {
+        "orderID": "6820c41db6de453d5082b22851df9",
+        "customer": "681e197b8102a7e2274507e8b34dc",
+        "items": [],
+        "subtotal": 7799.96,
+        "shippingCost": 50,
+        "total": 7849.96,
+        "orderDate": "2025-05-11 17:37:01",
+        "status": "pending",
+        "paymentStatus": "pending",
+        "paymentMethod": null
+    },
+    "5": {
+        "orderID": "6820c4e86075aab87141618234a13",
+        "customer": "681e197b8102a7e2274507e8b34dc",
+        "items": [],
+        "subtotal": 1499.99,
+        "shippingCost": 50,
+        "total": 1549.99,
+        "orderDate": "2025-05-11 17:40:24",
+        "status": "pending",
+        "paymentStatus": "pending",
+        "paymentMethod": null
+    },
+    "orders": {
+        "0": {
+            "order_id": "682390e0796c5",
+            "customer_id": "68235a873f612",
+            "items": [
+                {
+                    "productID": "2",
+                    "productName": "Polo Shirt",
+                    "quantity": 1,
+                    "unitCost": 799.99,
+                    "itemTotal": 799.99
+                }
+            ],
+            "subtotal": 799.99,
+            "shipping_cost": 50,
+            "total": 849.99,
+            "order_date": "2025-05-13 20:35:12",
+            "status": "pending",
+            "payment_status": "pending",
+            "payment_method": "cod",
+            "shipping_address": {
+                "island_group": "visayas",
+                "region": "ff",
+                "province": "dd",
+                "city": "ss",
+                "barangay": "ss",
+                "subdivision": "aa",
+                "street": "aa"
+            },
+            "tracking_number": null,
+            "estimated_delivery": null,
+            "notes": null
+        },
+        "1": {
+            "order_id": "682393016f360",
+            "customer_id": "68235a873f612",
+            "items": [],
+            "subtotal": 0,
+            "shipping_cost": 50,
+            "total": 50,
+            "order_date": "2025-05-13 20:44:17",
+            "status": "pending",
+            "payment_status": "pending",
+            "payment_method": "cod",
+            "shipping_address": {
+                "island_group": "visayas",
+                "region": "ff",
+                "province": "dd",
+                "city": "ss",
+                "barangay": "ss",
+                "subdivision": "aa",
+                "street": "aa"
+            },
+            "tracking_number": null,
+            "estimated_delivery": null,
+            "notes": null
+        },
+        "2": {
+            "order_id": "6825d000afad3",
+            "customer_id": "68235a873f612",
+            "items": [
+                {
+                    "productID": "1",
+                    "productName": "Classic Washed Shirt",
+                    "quantity": 1,
+                    "unitCost": 599.99,
+                    "itemTotal": 599.99
+                }
+            ],
+            "subtotal": 599.99,
+            "shipping_cost": 50,
+            "total": 649.99,
+            "order_date": "2025-05-15 13:29:04",
+            "status": "pending",
+            "payment_status": "pending",
+            "payment_method": "cod",
+            "shipping_address": {
+                "island_group": "visayas",
+                "region": "6",
+                "province": "Iloilo",
+                "city": "Passi",
+                "barangay": "Mam Peq",
+                "subdivision": "Turtle Village ",
+                "street": "none barangay mambiranan pequeno"
+            },
+            "tracking_number": null,
+            "estimated_delivery": null,
+            "notes": null
+        },
+        "3": {
+            "orderID": "6825dcf2a93b7",
+            "customerID": "68235a873f612",
+            "items": [
+                {
+                    "productID": "3",
+                    "productName": "Kahaki Suit",
+                    "quantity": 1,
+                    "unitCost": 999.99,
+                    "itemTotal": 999.99
+                }
+            ],
+            "subtotal": 999.99,
+            "shippingCost": 50,
+            "total": 1049.99,
+            "orderDate": "2025-05-15 14:24:18",
+            "status": "pending",
+            "paymentStatus": "pending",
+            "paymentMethod": "cod",
+            "shippingAddress": {
+                "island_group": "visayas",
+                "region": "4345rgrfgrgd",
+                "province": "fvfgdrhtythdghdrt",
+                "city": "fggestyhrtghgr",
+                "barangay": "fgdgdfgdfgr",
+                "subdivision": "rtgrtfghfgger",
+                "street": "ergdgdfgg"
+            },
+            "trackingNumber": null,
+            "estimatedDelivery": null,
+            "notes": null
+        },
+        "4": {
+            "orderID": "6825eeae72371",
+            "customerID": "68235a873f612",
+            "items": [
+                {
+                    "productID": "12",
+                    "productName": "Khaki Coords",
+                    "quantity": 1,
+                    "unitCost": 699.99,
+                    "itemTotal": 699.99
+                }
+            ],
+            "subtotal": 699.99,
+            "shippingCost": 50,
+            "total": 749.99,
+            "orderDate": "2025-05-15 15:39:58",
+            "status": "processing",
+            "paymentStatus": "processing",
+            "paymentMethod": "cod",
+            "shippingAddress": {
+                "island_group": "visayas",
+                "region": "fff",
+                "province": "fffffff",
+                "city": "ffff",
+                "barangay": "ffff",
+                "subdivision": "ffff",
+                "street": "ffff"
+            },
+            "trackingNumber": null,
+            "estimatedDelivery": null,
+            "notes": null
+        },
+        "5": {
+            "orderID": "6825f77c87768",
+            "customerID": "68235a873f612",
+            "items": [
+                {
+                    "productID": "2",
+                    "productName": "Polo Shirt",
+                    "quantity": 1,
+                    "unitCost": 799.99,
+                    "itemTotal": 799.99
+                }
+            ],
+            "subtotal": 799.99,
+            "shippingCost": 50,
+            "total": 849.99,
+            "orderDate": "2025-05-15 16:17:32",
+            "status": "processing",
+            "paymentStatus": "processing",
+            "paymentMethod": "e_money",
+            "shippingAddress": {
+                "island_group": "visayas",
+                "region": "6",
+                "province": "Iloilo",
+                "city": "Passi",
+                "barangay": "Somewhere",
+                "subdivision": "Turtle Village ",
+                "street": "EnKANTO"
+            },
+            "trackingNumber": null,
+            "estimatedDelivery": null,
+            "notes": null
+        },
+        "6": {
+            "orderID": "6826037b66274",
+            "customerID": "68235a873f612",
+            "items": [
+                {
+                    "productID": "4",
+                    "productName": "Casual Cargo Short",
+                    "quantity": 1,
+                    "unitCost": 699.99,
+                    "itemTotal": 699.99,
+                    "imageUrl": "assets\/images\/mens\/3.png"
+                },
+                {
+                    "productID": "3",
+                    "productName": "Kahaki Suit",
+                    "quantity": 1,
+                    "unitCost": 999.99,
+                    "itemTotal": 999.99,
+                    "imageUrl": "assets\/images\/mens\/5.png"
+                }
+            ],
+            "subtotal": 1699.98,
+            "shippingCost": 50,
+            "total": 1749.98,
+            "orderDate": "2025-05-15 17:08:43",
+            "status": "processing",
+            "paymentStatus": "processing",
+            "paymentMethod": "e_money",
+            "shippingAddress": {
+                "island_group": "visayas",
+                "region": "ff",
+                "province": "dd",
+                "city": "ss",
+                "barangay": "aaqq",
+                "subdivision": "qq",
+                "street": "ee"
+            },
+            "trackingNumber": null,
+            "estimatedDelivery": null,
+            "notes": null
+        },
+        "7": {
+            "orderID": "682605a6eff40",
+            "customerID": "68235a873f612",
+            "items": [
+                {
+                    "productID": "16",
+                    "productName": "Ballett Flats",
+                    "quantity": 1,
+                    "unitCost": 1299.99,
+                    "itemTotal": 1299.99,
+                    "imageUrl": "assets\/images\/footwear\/23.png"
+                }
+            ],
+            "subtotal": 1299.99,
+            "shippingCost": 50,
+            "total": 1349.99,
+            "orderDate": "2025-05-15 17:17:58",
+            "status": "processing",
+            "paymentStatus": "processing",
+            "paymentMethod": "e_money",
+            "shippingAddress": {
+                "island_group": "visayas",
+                "region": "ddd",
+                "province": "ddd",
+                "city": "ddd",
+                "barangay": "ddd",
+                "subdivision": "ddd",
+                "street": "ddd"
+            },
+            "trackingNumber": null,
+            "estimatedDelivery": null,
+            "notes": null
+        },
+        "8": {
+            "orderID": "682607eb7fe0e",
+            "customerID": "68235a873f612",
+            "items": [
+                {
+                    "productID": "3",
+                    "productName": "Kahaki Suit",
+                    "quantity": 1,
+                    "unitCost": 999.99,
+                    "itemTotal": 999.99,
+                    "imageUrl": "assets\/images\/mens\/5.png"
+                }
+            ],
+            "subtotal": 999.99,
+            "shippingCost": 50,
+            "total": 1049.99,
+            "orderDate": "2025-05-15 17:27:39",
+            "status": "processing",
+            "paymentStatus": "processing",
+            "paymentMethod": "debit_card",
+            "shippingAddress": {
+                "island_group": "visayas",
+                "region": "6",
+                "province": "Iloilo",
+                "city": "Passi",
+                "barangay": "ss",
+                "subdivision": "dd",
+                "street": "ff"
+            },
+            "trackingNumber": null,
+            "estimatedDelivery": null,
+            "notes": null
+        },
+        "9": {
+            "orderID": "682607eb7fe0e",
+            "customerID": "68235a873f612",
+            "items": [
+                {
+                    "productID": "3",
+                    "productName": "Kahaki Suit",
+                    "quantity": 1,
+                    "unitCost": 999.99,
+                    "itemTotal": 999.99,
+                    "imageUrl": "assets\/images\/mens\/5.png"
+                }
+            ],
+            "subtotal": 999.99,
+            "shippingCost": 50,
+            "total": 1049.99,
+            "orderDate": "2025-05-15 17:27:39",
+            "status": "cancelled",
+            "paymentStatus": "processing",
+            "paymentMethod": "debit_card",
+            "shippingAddress": {
+                "island_group": "visayas",
+                "region": "6",
+                "province": "Iloilo",
+                "city": "Passi",
+                "barangay": "ss",
+                "subdivision": "dd",
+                "street": "ff"
+            },
+            "trackingNumber": null,
+            "estimatedDelivery": null,
+            "notes": null
+        },
+        "10": {
+            "orderID": "682673bc2e128",
+            "customerID": "68235a873f612",
+            "items": [
+                {
+                    "productID": "7",
+                    "productName": "Cottagecore Dress",
+                    "quantity": 1,
+                    "unitCost": 699.99,
+                    "itemTotal": 699.99,
+                    "imageUrl": "assets\/images\/womens\/7.png"
+                }
+            ],
+            "subtotal": 699.99,
+            "shippingCost": 50,
+            "total": 749.99,
+            "orderDate": "2025-05-16 01:07:40",
+            "status": "processing",
+            "paymentStatus": "processing",
+            "paymentMethod": "cod",
+            "shippingAddress": {
+                "island_group": "visayas",
+                "region": "ggg",
+                "province": "555",
+                "city": "ff",
+                "barangay": "gg",
+                "subdivision": "ss",
+                "street": "33"
+            },
+            "trackingNumber": null,
+            "estimatedDelivery": null,
+            "notes": null
+        },
+        "11": {
+            "orderID": "6827ee624003e",
+            "customerID": "user_6827ec5991cd5",
+            "items": [
+                {
+                    "productID": "3",
+                    "productName": "Kahaki Suit",
+                    "quantity": 1,
+                    "unitCost": 999.99,
+                    "itemTotal": 999.99,
+                    "imageUrl": "assets\/images\/mens\/5.png"
+                },
+                {
+                    "productID": "6",
+                    "productName": "Silky Leather Jacket",
+                    "quantity": 3,
+                    "unitCost": 799.99,
+                    "itemTotal": 2399.9700000000003,
+                    "imageUrl": "assets\/images\/mens\/6.png"
+                }
+            ],
+            "subtotal": 3399.96,
+            "shippingCost": 50,
+            "total": 3449.96,
+            "orderDate": "2025-05-17 04:03:14",
+            "status": "processing",
+            "paymentStatus": "processing",
+            "paymentMethod": "debit_card",
+            "shippingAddress": {
+                "island_group": "visayas",
+                "region": "6",
+                "province": "Iloilo",
+                "city": "Passi",
+                "barangay": "Somewhere",
+                "subdivision": "Turtle Village ",
+                "street": "Somewhere"
+            },
+            "trackingNumber": null,
+            "estimatedDelivery": null,
+            "notes": null
+        },
+        "12": {
+            "orderID": "6827ee624003e",
+            "customerID": "user_6827ec5991cd5",
+            "items": [
+                {
+                    "productID": "3",
+                    "productName": "Kahaki Suit",
+                    "quantity": 1,
+                    "unitCost": 999.99,
+                    "itemTotal": 999.99,
+                    "imageUrl": "assets\/images\/mens\/5.png"
+                },
+                {
+                    "productID": "6",
+                    "productName": "Silky Leather Jacket",
+                    "quantity": 3,
+                    "unitCost": 799.99,
+                    "itemTotal": 2399.9700000000003,
+                    "imageUrl": "assets\/images\/mens\/6.png"
+                }
+            ],
+            "subtotal": 3399.96,
+            "shippingCost": 50,
+            "total": 3449.96,
+            "orderDate": "2025-05-17 04:03:14",
+            "status": "cancelled",
+            "paymentStatus": "processing",
+            "paymentMethod": "debit_card",
+            "shippingAddress": {
+                "island_group": "visayas",
+                "region": "6",
+                "province": "Iloilo",
+                "city": "Passi",
+                "barangay": "Somewhere",
+                "subdivision": "Turtle Village ",
+                "street": "Somewhere"
+            },
+            "trackingNumber": null,
+            "estimatedDelivery": null,
+            "notes": null
+        },
+        "13": {
+            "orderID": "6828456d25709",
+            "customerID": "user_6828452da08fa",
+            "items": [
+                {
+                    "productID": "2",
+                    "productName": "Polo Shirt",
+                    "quantity": 2,
+                    "unitCost": 799.99,
+                    "itemTotal": 1599.98,
+                    "imageUrl": "assets\/images\/mens\/4.png"
+                }
+            ],
+            "subtotal": 1599.98,
+            "shippingCost": 50,
+            "total": 1649.98,
+            "orderDate": "2025-05-17 10:14:37",
+            "status": "processing",
+            "paymentStatus": "processing",
+            "paymentMethod": "cod",
+            "shippingAddress": {
+                "island_group": "visayas",
+                "region": "ff",
+                "province": "fff",
+                "city": "fff",
+                "barangay": "fff",
+                "subdivision": "fff",
+                "street": "ff"
+            },
+            "trackingNumber": null,
+            "estimatedDelivery": null,
+            "notes": null
+        },
+        "ORD1747742892": {
+            "orderID": "ORD1747742892",
+            "customerID": "USR1747742282",
+            "items": [
+                {
+                    "productID": "1",
+                    "quantity": 2,
+                    "price": 599.99,
+                    "subtotal": 1199.98
+                }
+            ],
+            "subtotal": 1199.98,
+            "shippingCost": 50,
+            "total": 1249.98,
+            "orderDate": "2025-05-20 14:08:12",
+            "status": "pending",
+            "paymentStatus": "pending",
+            "paymentMethod": "e_money",
+            "shippingAddress": {
+                "island_group": "visayas",
+                "region": "ff",
+                "province": "fff",
+                "city": "fff",
+                "barangay": "rrr",
+                "subdivision": "rrrrrrrrrrrrrrrrr",
+                "street": "rrrrr"
+            },
+            "trackingNumber": null,
+            "estimatedDelivery": null,
+            "notes": null
+        },
+        "ORD1747790308": {
+            "orderID": "ORD1747790308",
+            "customerID": "USR1747742282",
+            "items": [
+                {
+                    "productID": "2",
+                    "productName": "Polo Shirt",
+                    "quantity": 2,
+                    "price": 799.99,
+                    "itemTotal": 1599.98,
+                    "imageUrl": "assets\/images\/mens\/4.png"
+                }
+            ],
+            "subtotal": 1599.98,
+            "shippingCost": 50,
+            "total": 1649.98,
+            "orderDate": "2025-05-21 03:18:28",
+            "status": "cancelled",
+            "paymentStatus": "refunded",
+            "paymentMethod": "e_money",
+            "shippingAddress": {
+                "island_group": "luzon",
+                "region": "fff",
+                "province": "ffff",
+                "city": "ffff",
+                "barangay": "ffff",
+                "subdivision": "fff",
+                "street": "fffffff"
+            },
+            "trackingNumber": "",
+            "estimatedDelivery": "",
+            "notes": ""
+        },
+        "ORD1747841835": {
+            "orderID": "ORD1747841835",
+            "customerID": "USR1747742282",
+            "items": [
+                {
+                    "productID": "2",
+                    "productName": "Polo Shirt",
+                    "quantity": 1,
+                    "price": 799.99,
+                    "itemTotal": 799.99,
+                    "imageUrl": "assets\/images\/mens\/4.png"
+                }
+            ],
+            "subtotal": 799.99,
+            "shippingCost": 50,
+            "total": 849.99,
+            "orderDate": "2025-05-21 17:37:15",
+            "status": "cancelled",
+            "paymentStatus": "refunded",
+            "paymentMethod": "e_money",
+            "shippingAddress": {
+                "island_group": "visayas",
+                "region": "f",
+                "province": "f",
+                "city": "f",
+                "barangay": "f",
+                "subdivision": "f",
+                "street": "f"
+            },
+            "trackingNumber": "",
+            "estimatedDelivery": "",
+            "notes": ""
+        },
+        "ORD1747842392": {
+            "orderID": "ORD1747842392",
+            "customerID": "USR1747742282",
+            "items": [
+                {
+                    "productID": "1",
+                    "productName": "Classic Washed Shirt",
+                    "quantity": 2,
+                    "price": 599.99,
+                    "itemTotal": 1199.98,
+                    "imageUrl": "assets\/images\/mens\/1.png"
+                }
+            ],
+            "subtotal": 1199.98,
+            "shippingCost": 50,
+            "total": 1249.98,
+            "orderDate": "2025-05-21 17:46:32",
+            "status": "pending",
+            "paymentStatus": "pending",
+            "paymentMethod": "cod",
+            "shippingAddress": {
+                "island_group": "visayas",
+                "region": "f",
+                "province": "d",
+                "city": "d",
+                "barangay": "d",
+                "subdivision": "s",
+                "street": "ww"
+            },
+            "trackingNumber": null,
+            "estimatedDelivery": null,
+            "notes": null
+        },
+        "ORD1747920408": {
+            "orderID": "ORD1747920408",
+            "customerID": "USR1747915055",
+            "items": [
+                {
+                    "productID": "2",
+                    "productName": "Kahaki Suit",
+                    "quantity": 1,
+                    "price": 999.99,
+                    "itemTotal": 999.99,
+                    "imageUrl": "assets\/images\/mens\/5.png"
+                },
+                {
+                    "productID": "1",
+                    "productName": "Polo Shirt",
+                    "quantity": 2,
+                    "price": 799.99,
+                    "itemTotal": 1599.98,
+                    "imageUrl": "assets\/images\/mens\/4.png"
+                }
+            ],
+            "subtotal": 2599.9700000000003,
+            "shippingCost": null,
+            "total": 2599.9700000000003,
+            "orderDate": "2025-05-22 15:26:48",
+            "status": "pending",
+            "paymentStatus": "pending",
+            "paymentMethod": "e_money",
+            "shippingAddress": {
+                "island_group": "visayas",
+                "region": "6",
+                "province": "iloilo ",
+                "city": "Passi ",
+                "barangay": "ff",
+                "street": "fff"
+            },
+            "trackingNumber": null,
+            "estimatedDelivery": null,
+            "notes": null
+        },
+        "ORD1747921719": {
+            "orderID": "ORD1747921719",
+            "customerID": "USR1747915055",
+            "items": [
+                {
+                    "productID": "2",
+                    "productName": "Polo Shirt",
+                    "quantity": 3,
+                    "price": 799.99,
+                    "itemTotal": 2399.9700000000003,
+                    "imageUrl": "assets\/images\/mens\/4.png"
+                }
+            ],
+            "subtotal": 2399.9700000000003,
+            "shippingCost": 50,
+            "total": 2449.9700000000003,
+            "orderDate": "2025-05-22 15:48:39",
+            "status": "cancelled",
+            "paymentStatus": "refunded",
+            "paymentMethod": "cod",
+            "shippingAddress": {
+                "island_group": "visayas",
+                "region": "333333333333",
+                "province": "2222222222",
+                "city": "111111111111",
+                "barangay": "5555555",
+                "street": "33333333333"
+            },
+            "trackingNumber": "",
+            "estimatedDelivery": "",
+            "notes": ""
+        },
+        "ORD1747924743": {
+            "orderID": "ORD1747924743",
+            "customerID": "USR1747924699",
+            "items": [
+                {
+                    "productID": "1",
+                    "productName": "Classic Washed Shirt",
+                    "quantity": 2,
+                    "price": 599.99,
+                    "itemTotal": 1199.98,
+                    "imageUrl": "assets\/images\/mens\/1.png"
+                }
+            ],
+            "subtotal": 1199.98,
+            "shippingCost": 50,
+            "total": 1249.98,
+            "orderDate": "2025-05-22 16:39:03",
+            "status": "pending",
+            "paymentStatus": "pending",
+            "paymentMethod": "debit_card",
+            "shippingAddress": {
+                "island_group": "luzon",
+                "region": "ff",
+                "province": "dd",
+                "city": "ddd",
+                "barangay": "dd",
+                "street": "dd"
+            },
+            "trackingNumber": null,
+            "estimatedDelivery": null,
+            "notes": null
+        },
+        "ORD1747928745": {
+            "orderID": "ORD1747928745",
+            "customerID": "USR1747927441",
+            "items": [
+                {
+                    "productID": "2",
+                    "productName": "Polo Shirt",
+                    "quantity": 1,
+                    "price": 799.99,
+                    "itemTotal": 799.99,
+                    "imageUrl": "assets\/images\/mens\/4.png"
+                }
+            ],
+            "subtotal": 799.99,
+            "shippingCost": 50,
+            "total": 849.99,
+            "orderDate": "2025-05-22 17:45:45",
+            "status": "pending",
+            "paymentStatus": "pending",
+            "paymentMethod": "e_money",
+            "shippingAddress": {
+                "island_group": "luzon",
+                "region": "t",
+                "province": "t",
+                "city": "t",
+                "barangay": "t",
+                "street": "t"
+            },
+            "trackingNumber": null,
+            "estimatedDelivery": null,
+            "notes": null
+        }
+    }
+}

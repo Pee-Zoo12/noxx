@@ -1,0 +1,277 @@
+{
+    "shipping": {
+        "user_682452225a60f": {
+            "shippingID": null,
+            "shippingType": null,
+            "shippingCost": 0,
+            "shippingAddress": null
+        },
+        "68235a873f612": {
+            "shippingID": "682673bc2b42d",
+            "shippingType": "standard",
+            "shippingCost": 50,
+            "shippingAddress": {
+                "island_group": "visayas",
+                "region": "ggg",
+                "province": "555",
+                "city": "ff",
+                "barangay": "gg",
+                "subdivision": "ss",
+                "street": "33"
+            },
+            "paymentMethod": "cod"
+        },
+        "user_6827ec5991cd5": {
+            "shippingID": "6827ee623b804",
+            "shippingType": "express",
+            "shippingCost": 50,
+            "shippingAddress": {
+                "island_group": "visayas",
+                "region": "6",
+                "province": "Iloilo",
+                "city": "Passi",
+                "barangay": "Somewhere",
+                "subdivision": "Turtle Village ",
+                "street": "Somewhere"
+            },
+            "paymentMethod": "debit_card"
+        },
+        "user_6828452da08fa": {
+            "shippingID": "6828456d24da2",
+            "shippingType": "standard",
+            "shippingCost": 50,
+            "shippingAddress": {
+                "island_group": "visayas",
+                "region": "ff",
+                "province": "fff",
+                "city": "fff",
+                "barangay": "fff",
+                "subdivision": "fff",
+                "street": "ff"
+            },
+            "paymentMethod": "cod"
+        },
+        "user_6828594add38a": {
+            "shippingID": null,
+            "shippingType": null,
+            "shippingCost": 0,
+            "shippingAddress": null,
+            "paymentMethod": null
+        },
+        "USR1747742282": {
+            "shippingID": "682df5588b483",
+            "shippingType": "standard",
+            "shippingCost": 50,
+            "shippingAddress": {
+                "island_group": "visayas",
+                "region": "f",
+                "province": "d",
+                "city": "d",
+                "barangay": "d",
+                "subdivision": "s",
+                "street": "ww"
+            },
+            "paymentMethod": "cod"
+        },
+        "USR1747915055": {
+            "shippingID": "682f2b37cba2c",
+            "shippingType": "standard",
+            "shippingCost": 50,
+            "shippingAddress": {
+                "island_group": "visayas",
+                "region": "333333333333",
+                "province": "2222222222",
+                "city": "111111111111",
+                "barangay": "5555555",
+                "street": "33333333333"
+            },
+            "paymentMethod": "cod"
+        },
+        "USR1747924699": {
+            "shippingID": "682f37076a863",
+            "shippingType": "standard",
+            "shippingCost": 50,
+            "shippingAddress": {
+                "island_group": "luzon",
+                "region": "ff",
+                "province": "dd",
+                "city": "ddd",
+                "barangay": "dd",
+                "street": "dd"
+            },
+            "paymentMethod": "debit_card"
+        },
+        "USR1747927441": {
+            "shippingID": "682f46a919fa8",
+            "shippingType": "standard",
+            "shippingCost": 50,
+            "shippingAddress": {
+                "island_group": "luzon",
+                "region": "t",
+                "province": "t",
+                "city": "t",
+                "barangay": "t",
+                "street": "t"
+            },
+            "paymentMethod": "e_money"
+        }
+    },
+    "user_682452225a60f": [],
+    "68235a873f612": [],
+    "user_6827ea96b0ffa": [],
+    "user_6827ec5991cd5": [
+        {
+            "cartItemID": "6828280d33b05",
+            "productID": "3",
+            "quantity": 2,
+            "dateAdded": "2025-05-17 08:09:17"
+        }
+    ],
+    "user_6828452da08fa": [
+        {
+            "cartItemID": "68284ca5532f5",
+            "productID": "2",
+            "quantity": 1,
+            "dateAdded": "2025-05-17 10:45:25"
+        }
+    ],
+    "user_6828594add38a": [
+        {
+            "cartItemID": "68287518cc614",
+            "productID": "2",
+            "quantity": 3,
+            "dateAdded": "2025-05-17 13:38:00"
+        },
+        {
+            "cartItemID": "682875ad71294",
+            "productID": "4",
+            "quantity": 1,
+            "dateAdded": "2025-05-17 13:40:29"
+        },
+        {
+            "cartItemID": "682875bf344ca",
+            "productID": "13",
+            "quantity": 2,
+            "dateAdded": "2025-05-17 13:40:47"
+        }
+    ],
+    "USR1747742282": [],
+    "USR1747843043": [],
+    "USR1747843247": [],
+    "USR1747915055": [
+        {
+            "cartItemID": "682f33f5631a3",
+            "productID": "2",
+            "quantity": 1,
+            "dateAdded": "2025-05-22 16:25:57"
+        }
+    ],
+    "carts": {
+        "CART1747919177": {
+            "cartID": "CART1747919177",
+            "userID": "USR1747915055",
+            "items": [],
+            "shippingID": "682f2618f2f48",
+            "shippingType": "standard",
+            "shippingCost": 50,
+            "shippingAddress": {
+                "island_group": "visayas",
+                "region": "6",
+                "province": "iloilo ",
+                "city": "Passi ",
+                "barangay": "ff",
+                "street": "fff"
+            },
+            "paymentMethod": "e_money",
+            "lastOrderID": "ORD1747920408"
+        },
+        "CART1747919249": {
+            "cartID": "CART1747919249",
+            "userID": "USR1747915055",
+            "items": [
+                {
+                    "productID": "2",
+                    "quantity": 1,
+                    "price": 999.99
+                }
+            ],
+            "shippingID": null,
+            "shippingType": null,
+            "shippingCost": 0,
+            "shippingAddress": null,
+            "paymentMethod": null,
+            "lastOrderID": null
+        },
+        "CART1747919261": {
+            "cartID": "CART1747919261",
+            "userID": "USR1747915055",
+            "items": [
+                {
+                    "productID": "17",
+                    "quantity": 1,
+                    "price": 2499.99
+                }
+            ],
+            "shippingID": null,
+            "shippingType": null,
+            "shippingCost": 0,
+            "shippingAddress": null,
+            "paymentMethod": null,
+            "lastOrderID": null
+        },
+        "CART1747919265": {
+            "cartID": "CART1747919265",
+            "userID": "USR1747915055",
+            "items": [
+                {
+                    "productID": "2",
+                    "quantity": 1,
+                    "price": 999.99
+                }
+            ],
+            "shippingID": null,
+            "shippingType": null,
+            "shippingCost": 0,
+            "shippingAddress": null,
+            "paymentMethod": null,
+            "lastOrderID": null
+        },
+        "CART1747919276": {
+            "cartID": "CART1747919276",
+            "userID": "USR1747915055",
+            "items": [
+                {
+                    "productID": "2",
+                    "quantity": 1,
+                    "price": 999.99
+                }
+            ],
+            "shippingID": null,
+            "shippingType": null,
+            "shippingCost": 0,
+            "shippingAddress": null,
+            "paymentMethod": null,
+            "lastOrderID": null
+        },
+        "CART1747919286": {
+            "cartID": "CART1747919286",
+            "userID": "USR1747915055",
+            "items": [
+                {
+                    "productID": "2",
+                    "quantity": 1,
+                    "price": 999.99
+                }
+            ],
+            "shippingID": null,
+            "shippingType": null,
+            "shippingCost": 0,
+            "shippingAddress": null,
+            "paymentMethod": null,
+            "lastOrderID": null
+        }
+    },
+    "USR1747924699": [],
+    "USR1747927441": [],
+    "USR1747929123": []
+}
