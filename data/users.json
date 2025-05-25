@@ -29,6 +29,26 @@
             "sex": "",
             "address": "22222222",
             "phone": "222222222"
+        },
+        {
+            "userID": "USR1748149516",
+            "username": "GSD",
+            "email": "gshds@gmail.com",
+            "password": "$2y$10$46LxE8i\/9\/MNf6qpcNVpp.WJXU6T7fLJITMAAJuPq4gFyIobJikDC",
+            "birthday": "2004-10-03",
+            "sex": "male",
+            "address": "333",
+            "phone": "333"
+        },
+        {
+            "userID": "USR1748151969",
+            "username": "PJ",
+            "email": "pj@gmail.com",
+            "password": "$2y$10$cMkhcTT5Fe3P4XvAebmX9.IYfWWoQiNz86VUyl5xqHfL8eAI43oQq",
+            "birthday": "",
+            "sex": "",
+            "address": "333",
+            "phone": "33"
         }
     ]
 }

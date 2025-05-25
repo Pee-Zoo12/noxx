@@ -8,18 +8,21 @@ define('BASE_PATH', dirname(__DIR__));
 // Initialize required files
 require_once BASE_PATH . '/includes/config.php';
 require_once BASE_PATH . '/includes/functions.php';
+require_once __DIR__ . '/../classes/Company.php';
 
 // Helper functions for JSON handling
-function readJsonFile($file) {
+function readJsonFile($file)
+{
     if (!file_exists($file)) {
         return [];
     }
     $content = file_get_contents($file);
-    
+
     return json_decode($content, true) ?: [];
 }
 
-function writeJsonFile($file, $data) {
+function writeJsonFile($file, $data)
+{
     $dir = dirname($file);
     if (!is_dir($dir)) {
         mkdir($dir, 0777, true);
@@ -71,19 +74,32 @@ foreach ($dataFiles as $file => $defaultData) {
     }
 }
 
+// Check and initialize PURCHASES_FILE
+if (!file_exists(PURCHASES_FILE)) {
+    error_log('Purchases file does not exist: ' . PURCHASES_FILE);
+    // Create empty purchases file
+    file_put_contents(PURCHASES_FILE, json_encode([]));
+}
+
+if (!is_readable(PURCHASES_FILE)) {
+    error_log('Purchases file is not readable: ' . PURCHASES_FILE);
+}
+
 // Authentication helper functions
-function isLoggedIn() {
+function isLoggedIn()
+{
     return isset($_SESSION['user_id']) && isset($_SESSION['is_logged_in']) && $_SESSION['is_logged_in'] === true;
 }
 
-function getCurrentUser() {
+function getCurrentUser()
+{
     if (!isLoggedIn()) {
         return null;
     }
-    
+
     $users = readJsonFile(USERS_FILE);
     $userId = $_SESSION['user_id'];
-    
+
     foreach ($users as $type => $userList) {
         foreach ($userList as $user) {
             if ($user['userID'] == $userId) {
@@ -91,7 +107,7 @@ function getCurrentUser() {
             }
         }
     }
-    
+
     return null;
 }
 ?>

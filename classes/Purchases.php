@@ -1,273 +1,142 @@
 <?php
-define('PURCHASES_FILE', 'data/purchases.json');
+// Remove this line since it's now in config.php
+// define('PURCHASES_FILE', 'data/purchases.json');
 
-class Purchases {
-    protected $purchaseID;
-    protected $orderID;
-    protected $productID;
-    protected $productName;
-    protected $quantity;
-    protected $unitCost;
-    protected $total;
-    protected $purchaseDate;
-    protected $status;
-    protected $customerID;
-    protected $paymentMethod;
-    protected $paymentStatus;
-    protected $shippingAddress;
-    protected $trackingNumber;
-    
-    public function __construct($purchaseData = null) {
-        if ($purchaseData) {
-            $this->purchaseID = $purchaseData['purchaseID'] ?? generateUniqueId();
-            $this->orderID = $purchaseData['orderID'] ?? null;
-            $this->productID = $purchaseData['productID'] ?? null;
-            $this->productName = $purchaseData['productName'] ?? '';
-            $this->quantity = $purchaseData['quantity'] ?? 0;
-            $this->unitCost = $purchaseData['unitCost'] ?? 0;
-            $this->total = $purchaseData['total'] ?? 0;
-            $this->purchaseDate = $purchaseData['purchaseDate'] ?? date('Y-m-d H:i:s');
-            $this->status = $purchaseData['status'] ?? 'pending';
-            $this->customerID = $purchaseData['customerID'] ?? null;
-            $this->paymentMethod = $purchaseData['paymentMethod'] ?? null;
-            $this->paymentStatus = $purchaseData['paymentStatus'] ?? 'pending';
-            $this->shippingAddress = $purchaseData['shippingAddress'] ?? null;
-            $this->trackingNumber = $purchaseData['trackingNumber'] ?? null;
-        } else {
-            $this->purchaseID = generateUniqueId();
-            $this->purchaseDate = date('Y-m-d H:i:s');
-            $this->status = 'pending';
-            $this->paymentStatus = 'pending';
-        }
-    }
-    
-    // Save purchase data
-    public function save() {
-        try {
-            $purchases = readJsonFile(PURCHASES_FILE);
-            if (!isset($purchases['purchases'])) {
-                $purchases['purchases'] = [];
-            }
-            
-            $purchaseData = $this->toArray();
-            
-            // Check if purchase already exists
-            $found = false;
-            foreach ($purchases['purchases'] as &$purchase) {
-                if ($purchase['purchaseID'] === $this->purchaseID) {
-                    $purchase = $purchaseData;
-                    $found = true;
-                    break;
-                }
-            }
-            
-            // Add new purchase if not found
-            if (!$found) {
-                $purchases['purchases'][] = $purchaseData;
-            }
-            
-            return writeJsonFile(PURCHASES_FILE, $purchases);
-        } catch (Exception $e) {
-            error_log("Error saving purchase: " . $e->getMessage());
-            return false;
-        }
-    }
-    
-    // Create purchase from order
-    public static function createFromOrder($orderID, $productID, $quantity, $unitCost, $customerID, $paymentMethod, $shippingAddress) {
-        try {
-            // Get product details
-            $product = Product::getById($productID);
-            if (!$product) {
-                return false;
-            }
-            
-            $purchase = new Purchases([
-                'orderID' => $orderID,
-                'productID' => $productID,
-                'productName' => $product->getProductName(),
-                'quantity' => $quantity,
-                'unitCost' => $unitCost,
-                'total' => $quantity * $unitCost,
-                'customerID' => $customerID,
-                'paymentMethod' => $paymentMethod,
-                'shippingAddress' => $shippingAddress
-            ]);
-            
-            return $purchase->save() ? $purchase : false;
-        } catch (Exception $e) {
-            error_log("Error creating purchase from order: " . $e->getMessage());
-            return false;
-        }
-    }
-    
-    // Update purchase status
-    public function updateStatus($status) {
-        $validStatuses = ['pending', 'processing', 'shipped', 'delivered', 'cancelled'];
-        if (!in_array($status, $validStatuses)) {
-            return false;
-        }
-        
-        $this->status = $status;
-        return $this->save();
-    }
-    
-    // Update payment status
-    public function updatePaymentStatus($status) {
-        $validStatuses = ['pending', 'paid', 'failed'];
-        if (!in_array($status, $validStatuses)) {
-            return false;
-        }
-        
-        $this->paymentStatus = $status;
-        return $this->save();
-    }
-    
-    // Add tracking number
-    public function addTrackingNumber($trackingNumber) {
-        $this->trackingNumber = $trackingNumber;
-        return $this->save();
-    }
-    
-    // Get purchase by ID
-    public static function getById($purchaseID) {
-        try {
-            $purchases = readJsonFile(PURCHASES_FILE);
-            if (!isset($purchases['purchases'])) {
-                return null;
-            }
-            
-            foreach ($purchases['purchases'] as $purchase) {
-                if ($purchase['purchaseID'] === $purchaseID) {
-                    return new Purchases($purchase);
-                }
-            }
-            
-            return null;
-        } catch (Exception $e) {
-            error_log("Error getting purchase by ID: " . $e->getMessage());
-            return null;
-        }
-    }
-    
-    // Get purchases by customer ID
-    public static function getByCustomerID($customerID) {
-        try {
-            $purchases = readJsonFile(PURCHASES_FILE);
-            if (!isset($purchases['purchases'])) {
-                return [];
-            }
-            
-            $customerPurchases = [];
-            foreach ($purchases['purchases'] as $purchase) {
-                if ($purchase['customerID'] === $customerID) {
-                    $customerPurchases[] = new Purchases($purchase);
-                }
-            }
-            
-            return $customerPurchases;
-        } catch (Exception $e) {
-            error_log("Error getting purchases by customer ID: " . $e->getMessage());
+class Purchases
+{
+    private int $purchaseID;
+    private int $orderID;
+    private int $productID;
+    private string $productName;
+    private int $quantity;
+    private float $unitCost;
+    private float $total;
+    private int $customerID;
+    private string $paymentMethod;
+    private string $shippingAddress;
+    private string $status;
+
+    public static function viewPurchaseHistory(string|int $customerID): array
+    {
+        $purchases = readJsonFile(PURCHASES_FILE);
+        $history = [];
+
+        // Debug: Print the contents of purchases file
+        error_log('Purchases data: ' . print_r($purchases, true));
+        error_log('Customer ID being searched: ' . $customerID);
+
+        if (empty($purchases)) {
             return [];
         }
+
+        foreach ($purchases as $purchase) {
+            // Compare as strings to handle both string and int IDs
+            if ((string) $purchase['customerID'] === (string) $customerID) {
+                $history[] = new self([
+                    'purchaseID' => $purchase['purchaseID'] ?? '',
+                    'orderID' => $purchase['orderID'] ?? '',
+                    'productID' => $purchase['productID'] ?? '',
+                    'productName' => $purchase['productName'] ?? '',
+                    'quantity' => $purchase['quantity'] ?? 0,
+                    'unitCost' => $purchase['unitCost'] ?? 0.00,
+                    'total' => $purchase['total'] ?? 0.00,
+                    'customerID' => $purchase['customerID'] ?? '',
+                    'paymentMethod' => $purchase['paymentMethod'] ?? '',
+                    'status' => $purchase['status'] ?? 'pending'
+                ]);
+            }
+        }
+
+        // Debug: Print the history array
+        error_log('Purchase history: ' . print_r($history, true));
+
+        return $history;
     }
-    
-    // Get purchases by order ID
-    public static function getByOrderID($orderID) {
-        try {
-            $purchases = readJsonFile(PURCHASES_FILE);
-            if (!isset($purchases['purchases'])) {
-                return [];
+
+    // Add constructor if not already present
+    public function __construct(array $data = [])
+    {
+        foreach ($data as $key => $value) {
+            if (property_exists($this, $key)) {
+                $this->$key = $value;
             }
-            
-            $orderPurchases = [];
-            foreach ($purchases['purchases'] as $purchase) {
-                if ($purchase['orderID'] === $orderID) {
-                    $orderPurchases[] = new Purchases($purchase);
-                }
-            }
-            
-            return $orderPurchases;
-        } catch (Exception $e) {
-            error_log("Error getting purchases by order ID: " . $e->getMessage());
-            return [];
         }
     }
-    
-    // Convert purchase object to array
-    public function toArray() {
-        return [
-            'purchaseID' => $this->purchaseID,
+
+    // Add getters if not already present
+    public function getOrderID(): int
+    {
+        return $this->orderID;
+    }
+
+    public function getProductName(): string
+    {
+        return $this->productName;
+    }
+
+    public function getQuantity(): int
+    {
+        return $this->quantity;
+    }
+
+    public function getUnitCost(): float
+    {
+        return $this->unitCost;
+    }
+
+    public function getTotal(): float
+    {
+        return $this->total;
+    }
+
+    public function getPaymentMethod(): string
+    {
+        return $this->paymentMethod;
+    }
+
+    public function getStatus(): string
+    {
+        return $this->status;
+    }
+
+    public function recordPurchase(): bool
+    {
+        $purchases = readJsonFile(PURCHASES_FILE);
+
+        $purchaseData = [
+            'purchaseID' => 'PCH' . time(),
             'orderID' => $this->orderID,
             'productID' => $this->productID,
             'productName' => $this->productName,
             'quantity' => $this->quantity,
             'unitCost' => $this->unitCost,
-            'total' => $this->total,
-            'purchaseDate' => $this->purchaseDate,
-            'status' => $this->status,
+            'total' => $this->quantity * $this->unitCost,
             'customerID' => $this->customerID,
             'paymentMethod' => $this->paymentMethod,
-            'paymentStatus' => $this->paymentStatus,
             'shippingAddress' => $this->shippingAddress,
-            'trackingNumber' => $this->trackingNumber
+            'status' => 'completed',
+            'purchaseDate' => date('Y-m-d H:i:s')
         ];
+
+        $purchases[] = $purchaseData;
+
+        // Debug purchase recording
+        error_log('Recording purchase: ' . print_r($purchaseData, true));
+
+        return writeJsonFile(PURCHASES_FILE, $purchases);
     }
-    
-    // Getters
-    public function getPurchaseID() {
-        return $this->purchaseID;
-    }
-    
-    public function getOrderID() {
-        return $this->orderID;
-    }
-    
-    public function getProductID() {
-        return $this->productID;
-    }
-    
-    public function getProductName() {
-        return $this->productName;
-    }
-    
-    public function getQuantity() {
-        return $this->quantity;
-    }
-    
-    public function getUnitCost() {
-        return $this->unitCost;
-    }
-    
-    public function getTotal() {
-        return $this->total;
-    }
-    
-    public function getPurchaseDate() {
-        return $this->purchaseDate;
-    }
-    
-    public function getStatus() {
-        return $this->status;
-    }
-    
-    public function getCustomerID() {
-        return $this->customerID;
-    }
-    
-    public function getPaymentMethod() {
-        return $this->paymentMethod;
-    }
-    
-    public function getPaymentStatus() {
-        return $this->paymentStatus;
-    }
-    
-    public function getShippingAddress() {
-        return $this->shippingAddress;
-    }
-    
-    public function getTrackingNumber() {
-        return $this->trackingNumber;
+
+    public static function createFromOrder(array $orderData): self
+    {
+        return new self([
+            'orderID' => $orderData['orderID'],
+            'productID' => $orderData['productID'],
+            'productName' => $orderData['productName'],
+            'quantity' => $orderData['quantity'],
+            'unitCost' => $orderData['unitCost'],
+            'customerID' => $orderData['customerID'],
+            'paymentMethod' => $orderData['paymentMethod'],
+            'shippingAddress' => $orderData['shippingAddress']
+        ]);
     }
 }

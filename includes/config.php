@@ -20,3 +20,4 @@ define('CART_FILE', DATA_DIR . 'cart.json');
 define('INVENTORY_FILE', DATA_DIR . 'inventory.json');
 define('PAYMENTS_FILE', DATA_DIR . 'payments.json');
 define('COMPANY_FILE', DATA_DIR . 'company.json');
+define('PURCHASES_FILE', DATA_DIR . 'purchases.json');

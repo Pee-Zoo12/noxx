@@ -1,6 +1,5 @@
 <?php
-class Product
-{
+class Product {
     protected $productID;
     protected $productName;
     protected $serialNumber;
@@ -10,20 +9,14 @@ class Product
     protected $description;
     protected $imageUrl;
     protected $category;
-    protected $orderDetails;
-    protected $purchases;
-    protected $shoppingCart;
-    protected $status;
-
-
-    private function generateUniqueId()
-    {
+    
+    
+    private function generateUniqueId() {
         return uniqid();
     }
-
+    
     // Constructor
-    public function __construct($productData = null)
-    {
+    public function __construct($productData = null) {
         if ($productData) {
             $this->productID = $productData['productID'] ?? $this->generateUniqueId();
             $this->productName = $productData['productName'] ?? '';
@@ -49,28 +42,26 @@ class Product
             $this->status = 'active';
         }
     }
-
+    
     // Generate a unique serial number
-    private function generateSerialNumber()
-    {
+    private function generateSerialNumber() {
         return strtoupper(substr(md5(time() . rand()), 0, 12));
     }
-
+    
     // Save product data
-    public function save()
-    {
+    public function save() {
         try {
             $products = readJsonFile(PRODUCTS_FILE);
             if ($products === false) {
                 $products = ['products' => []];
             }
-
+            
             if (!isset($products['products'])) {
                 $products['products'] = [];
             }
-
+            
             $found = false;
-
+            
             // Check if product already exists
             foreach ($products['products'] as $key => $product) {
                 if ($product['productID'] === $this->productID) {
@@ -79,35 +70,34 @@ class Product
                     break;
                 }
             }
-
+            
             // Add new product if not found
             if (!$found) {
                 $products['products'][] = $this->toArray();
             }
-
+            
             return writeJsonFile(PRODUCTS_FILE, $products);
         } catch (Exception $e) {
             error_log("Error saving product: " . $e->getMessage());
             return false;
         }
     }
-
+    
     // Delete product
-    public function delete()
-    {
+    public function delete() {
         try {
             $products = readJsonFile(PRODUCTS_FILE);
             if ($products === false) {
                 return false;
             }
-
+            
             foreach ($products as $key => $product) {
                 if ($product['productID'] === $this->productID) {
                     unset($products[$key]);
                     break;
                 }
             }
-
+            
             $products = array_values($products); // Re-index array
             return writeJsonFile(PRODUCTS_FILE, $products);
         } catch (Exception $e) {
@@ -115,14 +105,13 @@ class Product
             return false;
         }
     }
-
+    
     // Sell product
-    public function sell($quantity)
-    {
+    public function sell($quantity) {
         if ($this->stockQuantity < $quantity || $this->status !== 'active') {
             return false;
         }
-
+        
         try {
             $this->stockQuantity -= $quantity;
             if ($this->stockQuantity <= 0) {
@@ -134,14 +123,13 @@ class Product
             return false;
         }
     }
-
+    
     // Restock product
-    public function restock($quantity)
-    {
+    public function restock($quantity) {
         if ($quantity <= 0) {
             return false;
         }
-
+        
         try {
             $this->stockQuantity += $quantity;
             if ($this->status === 'out_of_stock') {
@@ -153,20 +141,18 @@ class Product
             return false;
         }
     }
-
+    
     // Get product details
-    public function getProductDetails()
-    {
+    public function getProductDetails() {
         return $this->toArray();
     }
-
+    
     // Update stock quantity
-    public function updateStock($quantity)
-    {
+    public function updateStock($quantity) {
         if ($quantity < 0) {
             return false;
         }
-
+        
         try {
             $this->stockQuantity = $quantity;
             $this->status = $quantity > 0 ? 'active' : 'out_of_stock';
@@ -176,219 +162,205 @@ class Product
             return false;
         }
     }
-
-
+    
+    
     // Add to order details
-    public function addToOrderDetails(OrderDetails $orderDetail)
-    {
+    public function addToOrderDetails(OrderDetails $orderDetail) {
         $this->orderDetails[] = $orderDetail;
         return $this->updateProduct();
     }
-
+    
     // Add to purchases
-    public function addToPurchases(Purchases $purchase)
-    {
+    public function addToPurchases(Purchases $purchase) {
         $this->purchases[] = $purchase;
         return $this->updateProduct();
     }
-
+    
     // Add to shopping cart
-    public function addToShoppingCart(ShoppingCart $cart)
-    {
+    public function addToShoppingCart(ShoppingCart $cart) {
         $this->shoppingCart[] = $cart;
         return $this->updateProduct();
     }
-
+    
     // Load product by ID
-    public static function getById($productId)
-    {
+    public static function getById($productId) {
         try {
             $products = readJsonFile(PRODUCTS_FILE);
             if ($products === false) {
                 return null;
             }
-
+            
             foreach ($products['products'] as $product) {
                 if ($product['productID'] === $productId) {
                     return new Product($product);
                 }
             }
-
+            
             return null;
         } catch (Exception $e) {
             error_log("Error getting product by ID: " . $e->getMessage());
             return null;
         }
     }
-
+    
     // Get all products
-    public static function getAll()
-    {
+    public static function getAll() {
         try {
             $products = readJsonFile(PRODUCTS_FILE);
             if ($products === false) {
                 return [];
             }
-
+            
             $productObjects = [];
             foreach ($products as $product) {
                 $productObjects[] = new Product($product);
             }
-
+            
             return $productObjects;
         } catch (Exception $e) {
             error_log("Error getting all products: " . $e->getMessage());
             return [];
         }
     }
-
+    
     // Get active products
-    public static function getActive()
-    {
+    public static function getActive() {
         try {
             $products = readJsonFile(PRODUCTS_FILE);
             if ($products === false) {
                 return [];
             }
-
+            
             $productObjects = [];
             foreach ($products as $product) {
                 if ($product['status'] === 'active') {
                     $productObjects[] = new Product($product);
                 }
             }
-
+            
             return $productObjects;
         } catch (Exception $e) {
             error_log("Error getting active products: " . $e->getMessage());
             return [];
         }
     }
-
+    
     // Get products by category
-    public static function getByCategory($category)
-    {
+    public static function getByCategory($category) {
         try {
             $products = readJsonFile(PRODUCTS_FILE);
             if ($products === false || !isset($products['products'])) {
                 return [];
             }
-
+            
             $results = [];
             foreach ($products['products'] as $product) {
                 if (isset($product['category']) && $product['category'] === $category) {
                     $results[] = new Product($product);
                 }
             }
-
+            
             return $results;
         } catch (Exception $e) {
             error_log("Error getting products by category: " . $e->getMessage());
             return [];
         }
     }
-
+    
     // Get products by subcategory
-    public static function getBySubcategory($subcategory)
-    {
+    public static function getBySubcategory($subcategory) {
         try {
             $products = readJsonFile(PRODUCTS_FILE);
             if ($products === false) {
                 return [];
             }
-
+            
             $results = [];
             foreach ($products as $product) {
                 if ($product['subcategory'] === $subcategory) {
                     $results[] = new Product($product);
                 }
             }
-
+            
             return $results;
         } catch (Exception $e) {
             error_log("Error getting products by subcategory: " . $e->getMessage());
             return [];
         }
     }
-
+    
     // Get all categories
-    public static function getAllCategories()
-    {
+    public static function getAllCategories() {
         try {
             $products = readJsonFile(PRODUCTS_FILE);
             if ($products === false) {
                 return [];
             }
-
+            
             $categories = [];
             foreach ($products as $product) {
                 if (!empty($product['category']) && !in_array($product['category'], $categories)) {
                     $categories[] = $product['category'];
                 }
             }
-
+            
             return $categories;
         } catch (Exception $e) {
             error_log("Error getting categories: " . $e->getMessage());
             return [];
         }
     }
-
+    
     // Get all subcategories
-    public static function getAllSubcategories()
-    {
+    public static function getAllSubcategories() {
         try {
             $products = readJsonFile(PRODUCTS_FILE);
             if ($products === false) {
                 return [];
             }
-
+            
             $subcategories = [];
             foreach ($products as $product) {
                 if (!empty($product['subcategory']) && !in_array($product['subcategory'], $subcategories)) {
                     $subcategories[] = $product['subcategory'];
                 }
             }
-
+            
             return $subcategories;
         } catch (Exception $e) {
             error_log("Error getting subcategories: " . $e->getMessage());
             return [];
         }
     }
-
+    
     // Search products
-    public static function search($keyword)
-    {
+    public static function search($keyword) {
         try {
             $products = readJsonFile(PRODUCTS_FILE);
             if ($products === false) {
                 return [];
             }
-
+            
             $results = [];
             $keyword = strtolower($keyword);
-
+            
             foreach ($products as $product) {
-                if (
-                    strpos(strtolower($product['productName']), $keyword) !== false ||
+                if (strpos(strtolower($product['productName']), $keyword) !== false ||
                     strpos(strtolower($product['description']), $keyword) !== false ||
-                    strpos(strtolower($product['category']), $keyword) !== false
-                ) {
+                    strpos(strtolower($product['category']), $keyword) !== false) {
                     $results[] = new Product($product);
                 }
             }
-
+            
             return $results;
         } catch (Exception $e) {
             error_log("Error searching products: " . $e->getMessage());
             return [];
         }
     }
-
+    
     // Convert product object to array
-    public function toArray()
-    {
+    public function toArray() {
         return [
             'productID' => $this->productID,
             'productName' => $this->productName,
@@ -405,75 +377,61 @@ class Product
             'status' => $this->status
         ];
     }
-
+    
     // Getters and setters
-    public function getProductID()
-    {
+    public function getProductID() {
         return $this->productID;
     }
-
-    public function getProductName()
-    {
+    
+    public function getProductName() {
         return $this->productName;
     }
-
-    public function setProductName($productName)
-    {
+    
+    public function setProductName($productName) {
         $this->productName = $productName;
     }
-
-    public function getSerialNumber()
-    {
+    
+    public function getSerialNumber() {
         return $this->serialNumber;
     }
-
-    public function setSerialNumber($serialNumber)
-    {
+    
+    public function setSerialNumber($serialNumber) {
         $this->serialNumber = $serialNumber;
     }
-
-    public function getStockQuantity()
-    {
+    
+    public function getStockQuantity() {
         return $this->stockQuantity;
     }
-
-    public function setStockQuantity($stockQuantity)
-    {
+    
+    public function setStockQuantity($stockQuantity) {
         $this->stockQuantity = $stockQuantity;
     }
-
-    public function getType()
-    {
+    
+    public function getType() {
         return $this->type;
     }
-
-    public function setType($type)
-    {
+    
+    public function setType($type) {
         $this->type = $type;
     }
-
-    public function getUnitCost()
-    {
+    
+    public function getUnitCost() {
         return $this->unitCost;
     }
-
-    public function setUnitCost($unitCost)
-    {
+    
+    public function setUnitCost($unitCost) {
         $this->unitCost = $unitCost;
     }
-
-    public function getDescription()
-    {
+    
+    public function getDescription() {
         return $this->description;
     }
-
-    public function setDescription($description)
-    {
+    
+    public function setDescription($description) {
         $this->description = $description;
     }
-
-    public function getImageUrl()
-    {
+    
+    public function getImageUrl() {
         if (empty($this->imageUrl)) {
             return 'assets/images/noxlogo.png';
         }
@@ -481,12 +439,12 @@ class Product
         // Clean up the path
         $cleanPath = str_replace('\\', '/', $this->imageUrl);
         $cleanPath = ltrim($cleanPath, '/');
-
+        
         // If the path already includes the full directory structure, return it
         if (strpos($cleanPath, 'assets/images/') === 0) {
             return $cleanPath;
-        }
-
+            }
+            
         // If not, construct the path based on type
         if (!empty($this->type)) {
             $typePath = 'assets/images/' . strtolower($this->type) . '/' . basename($cleanPath);
@@ -494,76 +452,65 @@ class Product
                 return $typePath;
             }
         }
-
+        
         // If the direct path exists, return it
         if (file_exists($cleanPath)) {
             return $cleanPath;
         }
-
+        
         // Return default image if nothing else works
         return 'assets/images/noxlogo.png';
     }
-
-    public function setImageUrl($imageUrl)
-    {
+    
+    public function setImageUrl($imageUrl) {
         $this->imageUrl = $imageUrl;
         return $this->save();
     }
-
-    public function getCategory()
-    {
+    
+    public function getCategory() {
         return $this->category;
     }
-
-    public function setCategory($category)
-    {
+    
+    public function setCategory($category) {
         $this->category = $category;
     }
-
-    public function getOrderDetails()
-    {
+    
+    public function getOrderDetails() {
         return $this->orderDetails;
     }
-
-    public function getPurchases()
-    {
+    
+    public function getPurchases() {
         return $this->purchases;
     }
-
-    public function getShoppingCart()
-    {
+    
+    public function getShoppingCart() {
         return $this->shoppingCart;
     }
-
-    public function getStatus()
-    {
+    
+    public function getStatus() {
         return $this->status;
     }
-
-    public function setStatus($status)
-    {
+    
+    public function setStatus($status) {
         $this->status = $status;
     }
-
-    public function isActive()
-    {
+    
+    public function isActive() {
         return $this->status === 'active';
     }
-
-    public function isOutOfStock()
-    {
+    
+    public function isOutOfStock() {
         return $this->status === 'out_of_stock';
     }
-
-    private function updateProduct()
-    {
+    
+    private function updateProduct() {
         $products = readJsonFile(PRODUCTS_FILE);
-
+        
         if (isset($products['products'][$this->productID])) {
             $products['products'][$this->productID] = $this->toArray();
             return writeJsonFile(PRODUCTS_FILE, $products);
         }
-
+        
         return false;
     }
 }

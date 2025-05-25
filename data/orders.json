@@ -809,6 +809,198 @@
             "trackingNumber": null,
             "estimatedDelivery": null,
             "notes": null
+        },
+        "ORD1748154011": {
+            "orderID": "ORD1748154011",
+            "customerID": "USR1748151969",
+            "items": [
+                {
+                    "productID": "2",
+                    "productName": "Polo Shirt",
+                    "quantity": 1,
+                    "price": 799.99,
+                    "itemTotal": 799.99,
+                    "imageUrl": "assets\/images\/mens\/4.png"
+                }
+            ],
+            "subtotal": 799.99,
+            "shippingCost": 50,
+            "total": 849.99,
+            "orderDate": "2025-05-25 08:20:11",
+            "status": "pending",
+            "paymentStatus": "pending",
+            "paymentMethod": "cod",
+            "shippingAddress": {
+                "island_group": "luzon",
+                "region": "3",
+                "province": "3",
+                "city": "3",
+                "barangay": "3",
+                "street": "3"
+            },
+            "trackingNumber": null,
+            "estimatedDelivery": null,
+            "notes": null
+        },
+        "ORD1748154137": {
+            "orderID": "ORD1748154137",
+            "customerID": "USR1748151969",
+            "items": [
+                {
+                    "productID": "2",
+                    "productName": "Polo Shirt",
+                    "quantity": 1,
+                    "price": 799.99,
+                    "itemTotal": 799.99,
+                    "imageUrl": "assets\/images\/mens\/4.png"
+                }
+            ],
+            "subtotal": 799.99,
+            "shippingCost": 50,
+            "total": 849.99,
+            "orderDate": "2025-05-25 08:22:17",
+            "status": "pending",
+            "paymentStatus": "pending",
+            "paymentMethod": "cod",
+            "shippingAddress": {
+                "island_group": "luzon",
+                "region": "e",
+                "province": "e",
+                "city": "ee",
+                "barangay": "e",
+                "street": "e"
+            },
+            "trackingNumber": null,
+            "estimatedDelivery": null,
+            "notes": null
+        },
+        "ORD1748154634": {
+            "orderID": "ORD1748154634",
+            "customerID": "USR1748151969",
+            "items": [
+                {
+                    "productID": "1",
+                    "productName": "Classic Washed Shirt",
+                    "quantity": 1,
+                    "price": 599.99,
+                    "itemTotal": 599.99,
+                    "imageUrl": "assets\/images\/mens\/1.png"
+                }
+            ],
+            "subtotal": 599.99,
+            "shippingCost": 50,
+            "total": 649.99,
+            "orderDate": "2025-05-25 08:30:34",
+            "status": "pending",
+            "paymentStatus": "pending",
+            "paymentMethod": "cod",
+            "shippingAddress": {
+                "island_group": "luzon",
+                "region": "r",
+                "province": "r",
+                "city": "r",
+                "barangay": "r",
+                "street": "r"
+            },
+            "trackingNumber": null,
+            "estimatedDelivery": null,
+            "notes": null
+        },
+        "ORD1748154860": {
+            "orderID": "ORD1748154860",
+            "customerID": "USR1748151969",
+            "items": [
+                {
+                    "productID": "1",
+                    "productName": "Classic Washed Shirt",
+                    "quantity": 2,
+                    "price": 599.99,
+                    "itemTotal": 1199.98,
+                    "imageUrl": "assets\/images\/mens\/1.png"
+                }
+            ],
+            "subtotal": 1199.98,
+            "shippingCost": 50,
+            "total": 1249.98,
+            "orderDate": "2025-05-25 08:34:20",
+            "status": "pending",
+            "paymentStatus": "pending",
+            "paymentMethod": "cod",
+            "shippingAddress": {
+                "island_group": "mindanao",
+                "region": "r",
+                "province": "r",
+                "city": "r",
+                "barangay": "r",
+                "street": "r"
+            },
+            "trackingNumber": null,
+            "estimatedDelivery": null,
+            "notes": null
+        },
+        "ORD1748155125": {
+            "orderID": "ORD1748155125",
+            "customerID": "USR1748151969",
+            "items": [
+                {
+                    "productID": "1",
+                    "productName": "Classic Washed Shirt",
+                    "quantity": 1,
+                    "price": 599.99,
+                    "itemTotal": 599.99,
+                    "imageUrl": "assets\/images\/mens\/1.png"
+                }
+            ],
+            "subtotal": 599.99,
+            "shippingCost": 50,
+            "total": 649.99,
+            "orderDate": "2025-05-25 08:38:45",
+            "status": "pending",
+            "paymentStatus": "pending",
+            "paymentMethod": "cod",
+            "shippingAddress": {
+                "island_group": "luzon",
+                "region": "6",
+                "province": "6",
+                "city": "6",
+                "barangay": "6",
+                "street": "6"
+            },
+            "trackingNumber": null,
+            "estimatedDelivery": null,
+            "notes": null
+        },
+        "ORD1748155388": {
+            "orderID": "ORD1748155388",
+            "customerID": "USR1748151969",
+            "items": [
+                {
+                    "productID": "1",
+                    "productName": "Classic Washed Shirt",
+                    "quantity": 1,
+                    "price": 599.99,
+                    "itemTotal": 599.99,
+                    "imageUrl": "assets\/images\/mens\/1.png"
+                }
+            ],
+            "subtotal": 599.99,
+            "shippingCost": 50,
+            "total": 649.99,
+            "orderDate": "2025-05-25 08:43:08",
+            "status": "cancelled",
+            "paymentStatus": "refunded",
+            "paymentMethod": "cod",
+            "shippingAddress": {
+                "island_group": "visayas",
+                "region": "5",
+                "province": "5",
+                "city": "5",
+                "barangay": "5",
+                "street": "5"
+            },
+            "trackingNumber": "",
+            "estimatedDelivery": "",
+            "notes": ""
         }
     }
 }

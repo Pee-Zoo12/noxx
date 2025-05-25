@@ -55,75 +55,77 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <?php include 'includes/templates/header.php'; ?>
 
     <main class="container py-5">
-        <section class="profile-section">
-            <h2 class="mb-4">My Profile</h2>
+        <div class="profile-header d-flex justify-content-between align-items-center mb-4">
+            <h1 class="h2">My Profile</h1>
 
-            <?php if ($error): ?>
-                <div class="alert alert-danger"><?php echo $error; ?></div>
-            <?php endif; ?>
 
-            <?php if ($success): ?>
-                <div class="alert alert-success"><?php echo $success; ?></div>
-            <?php endif; ?>
+            <section class="profile-section">
+                <?php if ($error): ?>
+                    <div class="alert alert-danger"><?php echo $error; ?></div>
+                <?php endif; ?>
 
-            <form method="POST" class="profile-form">
-                <div class="row">
-                    <div class="col-md-6 mb-3">
-                        <label for="username" class="form-label">Username</label>
-                        <input type="text" class="form-control" id="username" name="username"
-                            value="<?php echo isset($userData['username']) ? htmlspecialchars($userData['username']) : ''; ?>"
-                            required>
+                <?php if ($success): ?>
+                    <div class="alert alert-success"><?php echo $success; ?></div>
+                <?php endif; ?>
+
+                <form method="POST" class="profile-form">
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="username" class="form-label">Username</label>
+                            <input type="text" class="form-control" id="username" name="username"
+                                value="<?php echo isset($userData['username']) ? htmlspecialchars($userData['username']) : ''; ?>"
+                                required>
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email" name="email"
+                                value="<?php echo isset($userData['email']) ? htmlspecialchars($userData['email']) : ''; ?>"
+                                required>
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+                            <label for="password" class="form-label">New Password (leave blank to keep current)</label>
+                            <input type="password" class="form-control" id="password" name="password">
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+                            <label for="birthday" class="form-label">Birthday</label>
+                            <input type="date" class="form-control" id="birthday" name="birthday"
+                                value="<?php echo isset($userData['birthday']) ? htmlspecialchars($userData['birthday']) : ''; ?>"
+                                required>
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+                            <label for="sex" class="form-label">Gender</label>
+                            <select class="form-select" id="sex" name="sex" required>
+                                <option value="">Select Gender</option>
+                                <option value="male" <?php echo (isset($userData['sex']) && $userData['sex'] === 'male') ? 'selected' : ''; ?>>Male</option>
+                                <option value="female" <?php echo (isset($userData['sex']) && $userData['sex'] === 'female') ? 'selected' : ''; ?>>Female</option>
+                                <option value="other" <?php echo (isset($userData['sex']) && $userData['sex'] === 'other') ? 'selected' : ''; ?>>Other</option>
+                            </select>
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+                            <label for="phone" class="form-label">Phone Number</label>
+                            <input type="tel" class="form-control" id="phone" name="phone"
+                                value="<?php echo isset($userData['phone']) ? htmlspecialchars($userData['phone']) : ''; ?>"
+                                required>
+                        </div>
+
+                        <div class="col-12 mb-3">
+                            <label for="address" class="form-label">Address</label>
+                            <textarea class="form-control" id="address" name="address" rows="3"
+                                required><?php echo isset($userData['address']) ? htmlspecialchars($userData['address']) : ''; ?></textarea>
+                        </div>
                     </div>
 
-                    <div class="col-md-6 mb-3">
-                        <label for="email" class="form-label">Email</label>
-                        <input type="email" class="form-control" id="email" name="email"
-                            value="<?php echo isset($userData['email']) ? htmlspecialchars($userData['email']) : ''; ?>"
-                            required>
+                    <div class="d-flex gap-3 mt-4">
+                        <button type="submit" class="btn btn-primary">Update Profile</button>
+                        <a href="logout.php" class="btn btn-outline-danger">Logout</a>
                     </div>
-
-                    <div class="col-md-6 mb-3">
-                        <label for="password" class="form-label">New Password (leave blank to keep current)</label>
-                        <input type="password" class="form-control" id="password" name="password">
-                    </div>
-
-                    <div class="col-md-6 mb-3">
-                        <label for="birthday" class="form-label">Birthday</label>
-                        <input type="date" class="form-control" id="birthday" name="birthday"
-                            value="<?php echo isset($userData['birthday']) ? htmlspecialchars($userData['birthday']) : ''; ?>"
-                            required>
-                    </div>
-
-                    <div class="col-md-6 mb-3">
-                        <label for="sex" class="form-label">Gender</label>
-                        <select class="form-select" id="sex" name="sex" required>
-                            <option value="">Select Gender</option>
-                            <option value="male" <?php echo (isset($userData['sex']) && $userData['sex'] === 'male') ? 'selected' : ''; ?>>Male</option>
-                            <option value="female" <?php echo (isset($userData['sex']) && $userData['sex'] === 'female') ? 'selected' : ''; ?>>Female</option>
-                            <option value="other" <?php echo (isset($userData['sex']) && $userData['sex'] === 'other') ? 'selected' : ''; ?>>Other</option>
-                        </select>
-                    </div>
-
-                    <div class="col-md-6 mb-3">
-                        <label for="phone" class="form-label">Phone Number</label>
-                        <input type="tel" class="form-control" id="phone" name="phone"
-                            value="<?php echo isset($userData['phone']) ? htmlspecialchars($userData['phone']) : ''; ?>"
-                            required>
-                    </div>
-
-                    <div class="col-12 mb-3">
-                        <label for="address" class="form-label">Address</label>
-                        <textarea class="form-control" id="address" name="address" rows="3"
-                            required><?php echo isset($userData['address']) ? htmlspecialchars($userData['address']) : ''; ?></textarea>
-                    </div>
-                </div>
-
-                <div class="d-flex gap-3 mt-4">
-                    <button type="submit" class="btn btn-primary">Update Profile</button>
-                    <a href="logout.php" class="btn btn-outline-danger">Logout</a>
-                </div>
-            </form>
-        </section>
+                </form>
+            </section>
     </main>
 
     <?php include 'includes/templates/footer.php'; ?>

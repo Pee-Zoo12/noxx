@@ -3,8 +3,7 @@ if (!defined('PAYMENTS_FILE')) {
     define('PAYMENTS_FILE', __DIR__ . '/../data/payments.json');
 }
 
-class Payment
-{
+class Payment {
     private $paymentID;
     private $orderID;
     private $amount;
@@ -16,116 +15,94 @@ class Payment
     private $cardType;
     private $billingAddress;
 
-    public function __construct()
-    {
+    public function __construct() {
         $this->paymentDate = date('Y-m-d H:i:s');
         $this->status = 'pending';
     }
 
     // Getters and Setters
-    public function getPaymentID()
-    {
+    public function getPaymentID() {
         return $this->paymentID;
     }
 
-    public function setPaymentID($paymentID)
-    {
+    public function setPaymentID($paymentID) {
         $this->paymentID = $paymentID;
     }
 
-    public function getOrderID()
-    {
+    public function getOrderID() {
         return $this->orderID;
     }
 
-    public function setOrderID($orderID)
-    {
+    public function setOrderID($orderID) {
         $this->orderID = $orderID;
     }
 
-    public function getAmount()
-    {
+    public function getAmount() {
         return $this->amount;
     }
 
-    public function setAmount($amount)
-    {
+    public function setAmount($amount) {
         $this->amount = $amount;
     }
 
-    public function getPaymentMethod()
-    {
+    public function getPaymentMethod() {
         return $this->paymentMethod;
     }
 
-    public function setPaymentMethod($paymentMethod)
-    {
+    public function setPaymentMethod($paymentMethod) {
         $this->paymentMethod = $paymentMethod;
     }
 
-    public function getPaymentDate()
-    {
+    public function getPaymentDate() {
         return $this->paymentDate;
     }
 
-    public function setPaymentDate($paymentDate)
-    {
+    public function setPaymentDate($paymentDate) {
         $this->paymentDate = $paymentDate;
     }
 
-    public function getStatus()
-    {
+    public function getStatus() {
         return $this->status;
     }
 
-    public function setStatus($status)
-    {
+    public function setStatus($status) {
         $this->status = $status;
     }
 
-    public function getTransactionID()
-    {
+    public function getTransactionID() {
         return $this->transactionID;
     }
 
-    public function setTransactionID($transactionID)
-    {
+    public function setTransactionID($transactionID) {
         $this->transactionID = $transactionID;
     }
 
-    public function getCardLast4()
-    {
+    public function getCardLast4() {
         return $this->cardLast4;
     }
 
-    public function setCardLast4($cardLast4)
-    {
+    public function setCardLast4($cardLast4) {
         $this->cardLast4 = $cardLast4;
     }
 
-    public function getCardType()
-    {
+    public function getCardType() {
         return $this->cardType;
     }
 
-    public function setCardType($cardType)
-    {
+    public function setCardType($cardType) {
         $this->cardType = $cardType;
     }
 
-    public function getBillingAddress()
-    {
+    public function getBillingAddress() {
         return $this->billingAddress;
     }
 
-    public function setBillingAddress($billingAddress)
-    {
+    public function setBillingAddress($billingAddress) {
         $this->billingAddress = $billingAddress;
     }
 
     // Process payment
-    public function processPayment()
-    {
+    public function processPayment() {
         try {
             // Validate payment data
             if (!$this->validatePaymentData()) {
@@ -150,13 +127,13 @@ class Payment
             if ($result) {
                 $this->status = 'completed';
                 $this->save();
-
+                
                 // Update order payment status
                 $order = Orders::getByID($this->orderID);
                 if ($order) {
                     $order->updatePaymentStatus('paid');
                 }
-
+                
                 return true;
             }
 
@@ -170,24 +147,21 @@ class Payment
     }
 
     // Process credit card payment
-    private function processCreditCardPayment()
-    {
+    private function processCreditCardPayment() {
         // In a real application, this would integrate with a payment gateway
         // For demo purposes, we'll simulate a successful payment
         return true;
     }
 
     // Process PayPal payment
-    private function processPayPalPayment()
-    {
+    private function processPayPalPayment() {
         // In a real application, this would integrate with PayPal API
         // For demo purposes, we'll simulate a successful payment
         return true;
     }
 
     // Validate payment data
-    private function validatePaymentData()
-    {
+    private function validatePaymentData() {
         if (!$this->orderID || !$this->amount || !$this->paymentMethod) {
             return false;
         }
@@ -204,8 +178,7 @@ class Payment
     }
 
     // Save payment
-    public function save()
-    {
+    public function save() {
         try {
             $payments = readJsonFile(PAYMENTS_FILE);
             if ($payments === false) {
@@ -258,8 +231,7 @@ class Payment
     }
 
     // Get payment by ID
-    public static function getByID($paymentID)
-    {
+    public static function getByID($paymentID) {
         try {
             $payments = readJsonFile(PAYMENTS_FILE);
             if (!isset($payments['payments'])) {
@@ -290,8 +262,7 @@ class Payment
     }
 
     // Get payment by order ID
-    public static function getByOrderID($orderID)
-    {
+    public static function getByOrderID($orderID) {
         try {
             $payments = readJsonFile(PAYMENTS_FILE);
             if (!isset($payments['payments'])) {

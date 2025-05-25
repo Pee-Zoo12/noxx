@@ -81,144 +81,148 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body>
     <?php include 'includes/templates/header.php'; ?>
 
-    <main>
-        <section class="checkout-section">
-            <h2>Checkout</h2>
-            <?php if ($error): ?>
-                <div class="alert alert-danger"><?php echo $error; ?></div>
-            <?php endif; ?>
+    <main class="container py-5">
+        <div class="row">
+            <div class="col-12">
+                <h1 class="text-center mb-4">Checkout</h1>
+            </div>
+            <div class="col-md-8 offset-md-2">
+                <?php if ($error): ?>
+                    <div class="alert alert-danger"><?php echo $error; ?></div>
+                <?php endif; ?>
 
-            <?php if (empty($cartDetails['items'])): ?>
-                <div class="empty-cart">
-                    <p>Your cart is empty</p>
-                    <a href="products.php" class="btn btn-primary">Continue Shopping</a>
-                </div>
-            <?php else: ?>
-                <div class="checkout-container">
-                    <div class="checkout-form">
-                        <form method="POST" class="shipping-form">
-                            <h3>Shipping Information</h3>
-                            <div class="form-group">
-                                <label for="island_group">Island Group</label>
-                                <select id="island_group" name="island_group" required>
-                                    <option value="">Select Island Group</option>
-                                    <option value="luzon">Luzon</option>
-                                    <option value="visayas">Visayas</option>
-                                    <option value="mindanao">Mindanao</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="region">Region</label>
-                                <input type="text" id="region" name="region" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="province">Province</label>
-                                <input type="text" id="province" name="province" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="city">City</label>
-                                <input type="text" id="city" name="city" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="barangay">Barangay</label>
-                                <input type="text" id="barangay" name="barangay" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="street">Street Address</label>
-                                <input type="text" id="street" name="street" required>
-                            </div>
-
-                            <h3>Payment Method</h3>
-                            <div class="form-group">
-                                <label for="payment_method">Select Payment Method</label>
-                                <select id="payment_method" name="payment_method" required>
-                                    <option value="">Select Payment Method</option>
-                                    <option value="cod">Cash on Delivery</option>
-                                    <option value="debit_card">Debit Card</option>
-                                    <option value="e_money">E-Money</option>
-                                </select>
-                            </div>
-
-                            <div id="e_money_fields" style="display: none;">
+                <?php if (empty($cartDetails['items'])): ?>
+                    <div class="empty-cart">
+                        <p>Your cart is empty</p>
+                        <a href="products.php" class="btn btn-primary">Continue Shopping</a>
+                    </div>
+                <?php else: ?>
+                    <div class="checkout-container">
+                        <div class="checkout-form">
+                            <form method="POST" class="shipping-form">
+                                <h3>Shipping Information</h3>
                                 <div class="form-group">
-                                    <label for="e_money_type">E-Money Type</label>
-                                    <select id="e_money_type" name="e_money_type">
-                                        <option value="">Select E-Money Type</option>
-                                        <option value="gcash">GCash</option>
-                                        <option value="paymaya">PayMaya</option>
+                                    <label for="island_group">Island Group</label>
+                                    <select id="island_group" name="island_group" required>
+                                        <option value="">Select Island Group</option>
+                                        <option value="luzon">Luzon</option>
+                                        <option value="visayas">Visayas</option>
+                                        <option value="mindanao">Mindanao</option>
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <label for="account_number">Account Number</label>
-                                    <input type="text" id="account_number" name="account_number">
-                                </div>
-                            </div>
-
-                            <div id="debit_card_fields" style="display: none;">
-                                <div class="form-group">
-                                    <label for="card_number">Card Number</label>
-                                    <input type="text" id="card_number" name="card_number" maxlength="19"
-                                        onkeyup="formatCardNumber(this)">
+                                    <label for="region">Region</label>
+                                    <input type="text" id="region" name="region" required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="card_holder_name">Card Holder Name</label>
-                                    <input type="text" id="card_holder_name" name="card_holder_name">
+                                    <label for="province">Province</label>
+                                    <input type="text" id="province" name="province" required>
                                 </div>
-                                <div class="form-row">
+                                <div class="form-group">
+                                    <label for="city">City</label>
+                                    <input type="text" id="city" name="city" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="barangay">Barangay</label>
+                                    <input type="text" id="barangay" name="barangay" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="street">Street Address</label>
+                                    <input type="text" id="street" name="street" required>
+                                </div>
+
+                                <h3>Payment Method</h3>
+                                <div class="form-group">
+                                    <label for="payment_method">Select Payment Method</label>
+                                    <select id="payment_method" name="payment_method" required>
+                                        <option value="">Select Payment Method</option>
+                                        <option value="cod">Cash on Delivery</option>
+                                        <option value="debit_card">Debit Card</option>
+                                        <option value="e_money">E-Money</option>
+                                    </select>
+                                </div>
+
+                                <div id="e_money_fields" style="display: none;">
                                     <div class="form-group">
-                                        <label for="expiry_date">Expiry Date</label>
-                                        <input type="text" id="expiry_date" name="expiry_date" placeholder="MM/YY"
-                                            maxlength="5">
+                                        <label for="e_money_type">E-Money Type</label>
+                                        <select id="e_money_type" name="e_money_type">
+                                            <option value="">Select E-Money Type</option>
+                                            <option value="gcash">GCash</option>
+                                            <option value="paymaya">PayMaya</option>
+                                        </select>
                                     </div>
                                     <div class="form-group">
-                                        <label for="cvv">CVV</label>
-                                        <input type="text" id="cvv" name="cvv" maxlength="3">
+                                        <label for="account_number">Account Number</label>
+                                        <input type="text" id="account_number" name="account_number">
                                     </div>
                                 </div>
-                            </div>
 
-                            <div class="form-group">
-                                <label for="shipping_type">Shipping Type</label>
-                                <select id="shipping_type" name="shipping_type" required>
-                                    <option value="">Select Shipping Type</option>
-                                    <option value="standard">Standard Shipping</option>
-                                    <option value="express">Express Shipping</option>
-                                </select>
-                            </div>
-
-                            <button type="submit" class="btn btn-primary">Place Order</button>
-                        </form>
-                    </div>
-
-                    <div class="order-summary">
-                        <h3>Order Summary</h3>
-                        <div class="summary-items">
-                            <?php foreach ($cartDetails['items'] as $item): ?>
-                                <div class="summary-item">
-                                    <span class="item-name"><?php echo htmlspecialchars($item['productName']); ?></span>
-                                    <span class="item-quantity">x<?php echo $item['quantity']; ?></span>
-                                    <span class="item-price">₱<?php echo number_format($item['itemTotal'], 2); ?></span>
+                                <div id="debit_card_fields" style="display: none;">
+                                    <div class="form-group">
+                                        <label for="card_number">Card Number</label>
+                                        <input type="text" id="card_number" name="card_number" maxlength="19"
+                                            onkeyup="formatCardNumber(this)">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="card_holder_name">Card Holder Name</label>
+                                        <input type="text" id="card_holder_name" name="card_holder_name">
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="expiry_date">Expiry Date</label>
+                                            <input type="text" id="expiry_date" name="expiry_date" placeholder="MM/YY"
+                                                maxlength="5">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="cvv">CVV</label>
+                                            <input type="text" id="cvv" name="cvv" maxlength="3">
+                                        </div>
+                                    </div>
                                 </div>
-                            <?php endforeach; ?>
+
+                                <div class="form-group">
+                                    <label for="shipping_type">Shipping Type</label>
+                                    <select id="shipping_type" name="shipping_type" required>
+                                        <option value="">Select Shipping Type</option>
+                                        <option value="standard">Standard Shipping</option>
+                                        <option value="express">Express Shipping</option>
+                                    </select>
+                                </div>
+
+                                <button type="submit" class="btn btn-primary">Place Order</button>
+                            </form>
                         </div>
-                        <div class="summary-totals">
-                            <div class="summary-row">
-                                <span>Subtotal:</span>
-                                <span>₱<?php echo number_format($cartDetails['subtotal'], 2); ?></span>
+
+                        <div class="order-summary">
+                            <h3>Order Summary</h3>
+                            <div class="summary-items">
+                                <?php foreach ($cartDetails['items'] as $item): ?>
+                                    <div class="summary-item">
+                                        <span class="item-name"><?php echo htmlspecialchars($item['productName']); ?></span>
+                                        <span class="item-quantity">x<?php echo $item['quantity']; ?></span>
+                                        <span class="item-price">₱<?php echo number_format($item['itemTotal'], 2); ?></span>
+                                    </div>
+                                <?php endforeach; ?>
                             </div>
-                            <div class="summary-row">
-                                <span>Shipping:</span>
-                                <span>₱50.00</span>
-                            </div>
-                            <div class="summary-row total">
-                                <span>Total:</span>
-                                <span>₱<?php echo number_format($cartDetails['subtotal'] + 50, 2); ?></span>
+                            <div class="summary-totals">
+                                <div class="summary-row">
+                                    <span>Subtotal:</span>
+                                    <span>₱<?php echo number_format($cartDetails['subtotal'], 2); ?></span>
+                                </div>
+                                <div class="summary-row">
+                                    <span>Shipping:</span>
+                                    <span>₱50.00</span>
+                                </div>
+                                <div class="summary-row total">
+                                    <span>Total:</span>
+                                    <span>₱<?php echo number_format($cartDetails['subtotal'] + 50, 2); ?></span>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            <?php endif; ?>
-        </section>
+                <?php endif; ?>
+            </div>
+        </div>
     </main>
 
     <?php include 'includes/templates/footer.php'; ?>

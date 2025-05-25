@@ -1,11 +1,5 @@
 <?php
 
-// Generate a unique ID for company
-function generateUniqueId()
-{
-    return uniqid('company_', true);
-}
-
 class Company
 {
     private $companyID;

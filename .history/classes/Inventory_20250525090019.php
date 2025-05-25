@@ -1,8 +1,7 @@
 <?php
 define('INVENTORY_FILE', 'data/inventory.json');
 
-class Inventory
-{
+class Inventory {
     private $inventoryID;
     private $productID;
     private $quantity;
@@ -12,9 +11,8 @@ class Inventory
     private $supplierID;
     private $purchasePrice;
     private $notes;
-
-    public function __construct($inventoryData = null)
-    {
+    
+    public function __construct($inventoryData = null) {
         if ($inventoryData) {
             $this->inventoryID = $inventoryData['inventoryID'] ?? null;
             $this->productID = $inventoryData['productID'] ?? null;
@@ -30,20 +28,18 @@ class Inventory
             $this->lastRestockDate = date('Y-m-d H:i:s');
         }
     }
-
-    public function save()
-    {
+    
+    public function save() {
         $inventory = readJsonFile(INVENTORY_FILE);
         if (!isset($inventory['inventory'])) {
             $inventory['inventory'] = [];
         }
-
+        
         $inventory['inventory'][$this->inventoryID] = $this->toArray();
         return writeJsonFile(INVENTORY_FILE, $inventory);
     }
-
-    public function delete()
-    {
+    
+    public function delete() {
         try {
             $inventory = readJsonFile(INVENTORY_FILE);
             if (!isset($inventory['inventory'])) {
@@ -64,18 +60,16 @@ class Inventory
             return false;
         }
     }
-
-    public function updateQuantity($quantity)
-    {
+    
+    public function updateQuantity($quantity) {
         if ($quantity >= 0) {
             $this->quantity = $quantity;
             return $this->save();
         }
         return false;
     }
-
-    public function addStock($quantity)
-    {
+    
+    public function addStock($quantity) {
         if ($quantity > 0) {
             $this->quantity += $quantity;
             $this->lastRestockDate = date('Y-m-d H:i:s');
@@ -83,23 +77,20 @@ class Inventory
         }
         return false;
     }
-
-    public function removeStock($quantity)
-    {
+    
+    public function removeStock($quantity) {
         if ($quantity > 0 && $this->quantity >= $quantity) {
             $this->quantity -= $quantity;
             return $this->save();
         }
         return false;
     }
-
-    public function checkReorderLevel()
-    {
+    
+    public function checkReorderLevel() {
         return $this->quantity <= $this->reorderLevel;
     }
-
-    public function toArray()
-    {
+    
+    public function toArray() {
         return [
             'inventoryID' => $this->inventoryID,
             'productID' => $this->productID,
@@ -112,108 +103,75 @@ class Inventory
             'notes' => $this->notes
         ];
     }
-
+    
     // Getters and setters
-    public function getInventoryID()
-    {
+    public function getInventoryID() {
         return $this->inventoryID;
     }
-
-    public function setInventoryID($inventoryID)
-    {
-        $this->inventoryID = $inventoryID;
-    }
-
-    public function getProductID()
-    {
+    
+    public function getProductID() {
         return $this->productID;
     }
-
-    public function setProductID($productID)
-    {
+    
+    public function setProductID($productID) {
         $this->productID = $productID;
     }
-
-    public function getQuantity()
-    {
+    
+    public function getQuantity() {
         return $this->quantity;
     }
-
-    public function setQuantity($quantity)
-    {
-        $this->quantity = $quantity;
-        return $this->save();
-    }
-
-    public function getReorderLevel()
-    {
+    
+    public function getReorderLevel() {
         return $this->reorderLevel;
     }
-
-    public function setReorderLevel($reorderLevel)
-    {
+    
+    public function setReorderLevel($reorderLevel) {
         $this->reorderLevel = $reorderLevel;
         return $this->save();
     }
-
-    public function getLastRestockDate()
-    {
+    
+    public function getLastRestockDate() {
         return $this->lastRestockDate;
     }
-
-    public function setLastRestockDate($lastRestockDate)
-    {
-        $this->lastRestockDate = $lastRestockDate;
-        return $this->save();
-    }
-
-    public function getLocation()
-    {
+    
+    public function getLocation() {
         return $this->location;
     }
-
-    public function setLocation($location)
-    {
+    
+    public function setLocation($location) {
         $this->location = $location;
         return $this->save();
     }
-
-    public function getSupplierID()
-    {
+    
+    public function getSupplierID() {
         return $this->supplierID;
     }
-
-    public function setSupplierID($supplierID)
-    {
+    
+    public function setSupplierID($supplierID) {
         $this->supplierID = $supplierID;
         return $this->save();
     }
-
-    public function getPurchasePrice()
-    {
+    
+    public function getPurchasePrice() {
         return $this->purchasePrice;
     }
-
-    public function setPurchasePrice($purchasePrice)
-    {
+    
+    public function setPurchasePrice($purchasePrice) {
         $this->purchasePrice = $purchasePrice;
         return $this->save();
     }
-
-    public function getNotes()
-    {
+    
+    public function getNotes() {
         return $this->notes;
     }
-
-    public function setNotes($notes)
-    {
+    
+    public function setNotes($notes) {
         $this->notes = $notes;
         return $this->save();
     }
-
+    
     // Static methods
-    public static function getByProductID($productID)
-    {
+    public static function getByProductID($productID) {
         try {
             $inventory = readJsonFile(INVENTORY_FILE);
             if (!isset($inventory['inventory'])) {
@@ -231,9 +189,8 @@ class Inventory
             return null;
         }
     }
-
-    public static function getAllInventory()
-    {
+    
+    public static function getAllInventory() {
         try {
             $inventory = readJsonFile(INVENTORY_FILE);
             if (!isset($inventory['inventory'])) {
@@ -250,9 +207,8 @@ class Inventory
             return [];
         }
     }
-
-    public static function getLowStockItems()
-    {
+    
+    public static function getLowStockItems() {
         try {
             $inventory = readJsonFile(INVENTORY_FILE);
             if (!isset($inventory['inventory'])) {
@@ -271,9 +227,8 @@ class Inventory
             return [];
         }
     }
-
-    public static function getByLocation($location)
-    {
+    
+    public static function getByLocation($location) {
         try {
             $inventory = readJsonFile(INVENTORY_FILE);
             if (!isset($inventory['inventory'])) {

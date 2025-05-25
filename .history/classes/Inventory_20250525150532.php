@@ -161,12 +161,6 @@ class Inventory
         return $this->lastRestockDate;
     }
 
-    public function setLastRestockDate($lastRestockDate)
-    {
-        $this->lastRestockDate = $lastRestockDate;
-        return $this->save();
-    }
-
     public function getLocation()
     {
         return $this->location;

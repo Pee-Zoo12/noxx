@@ -1,5 +1,6 @@
 <?php
-class Orders {
+class Orders
+{
     private $orderID;
     private $customerID;
     private $items;
@@ -15,7 +16,8 @@ class Orders {
     private $estimatedDelivery;
     private $notes;
 
-    public function __construct($orderData = null) {
+    public function __construct($orderData = null)
+    {
         if ($orderData) {
             $this->orderID = $orderData['orderID'] ?? null;
             $this->customerID = $orderData['customerID'] ?? null;
@@ -39,7 +41,8 @@ class Orders {
         }
     }
 
-    public function updateStatus($status) {
+    public function updateStatus($status)
+    {
         $validStatuses = ['pending', 'processing', 'shipped', 'delivered', 'cancelled'];
         if (in_array($status, $validStatuses)) {
             $this->status = $status;
@@ -48,7 +51,8 @@ class Orders {
         return false;
     }
 
-    public function updatePaymentStatus($status) {
+    public function updatePaymentStatus($status)
+    {
         $validStatuses = ['pending', 'paid', 'failed', 'refunded'];
         if (in_array($status, $validStatuses)) {
             $this->paymentStatus = $status;
@@ -57,7 +61,8 @@ class Orders {
         return false;
     }
 
-    public function cancelOrder() {
+    public function cancelOrder()
+    {
         if ($this->status === 'pending' || $this->status === 'processing') {
             $this->status = 'cancelled';
             $this->paymentStatus = 'refunded';
@@ -66,7 +71,8 @@ class Orders {
         return false;
     }
 
-    private function DisplayOrderConfirmation() {
+    private function DisplayOrderConfirmation()
+    {
         $orderDetails = [
             'orderID' => $this->orderID,
             'orderDate' => $this->orderDate,
@@ -81,7 +87,8 @@ class Orders {
         return $orderDetails;
     }
 
-    public function addItem($productID, $quantity, $price) {
+    public function addItem($productID, $quantity, $price)
+    {
         // Get product details
         $product = Product::getById($productID);
         if (!$product) {
@@ -96,12 +103,13 @@ class Orders {
             'itemTotal' => $quantity * $price,
             'imageUrl' => $product->getImageUrl()
         ];
-        
+
         $this->calculateTotals();
         return true;
     }
 
-    private function calculateTotals() {
+    private function calculateTotals()
+    {
         $this->subtotal = 0;
         foreach ($this->items as $item) {
             $this->subtotal += $item['itemTotal'];
@@ -109,17 +117,19 @@ class Orders {
         $this->total = $this->subtotal + $this->shippingCost;
     }
 
-    public function save() {
+    public function save()
+    {
         $orders = readJsonFile(ORDERS_FILE);
         if (!isset($orders['orders'])) {
             $orders['orders'] = [];
         }
-        
+
         $orders['orders'][$this->orderID] = $this->toArray();
         return writeJsonFile(ORDERS_FILE, $orders);
     }
 
-    public function toArray() {
+    public function toArray()
+    {
         return [
             'orderID' => $this->orderID,
             'customerID' => $this->customerID,
@@ -139,106 +149,128 @@ class Orders {
     }
 
     // Getters and setters
-    public function getOrderID() {
+    public function getOrderID()
+    {
         return $this->orderID;
     }
 
-    public function getCustomerID() {
+    public function getCustomerID()
+    {
         return $this->customerID;
     }
 
-    public function setCustomerID($customerID) {
+    public function setCustomerID($customerID)
+    {
         $this->customerID = $customerID;
     }
 
-    public function getItems() {
+    public function getItems()
+    {
         return $this->items;
     }
 
-    public function getSubtotal() {
+    public function getSubtotal()
+    {
         return $this->subtotal;
     }
 
-    public function getShippingCost() {
+    public function getShippingCost()
+    {
         return $this->shippingCost;
     }
 
-    public function setShippingCost($shippingCost) {
+    public function setShippingCost($shippingCost)
+    {
         $this->shippingCost = $shippingCost;
         $this->calculateTotals();
     }
 
-    public function getTotal() {
+    public function getTotal()
+    {
         return $this->total;
     }
 
-    public function getOrderDate() {
+    public function getOrderDate()
+    {
         return $this->orderDate;
     }
 
-    public function getStatus() {
+    public function getStatus()
+    {
         return $this->status;
     }
 
-    public function getPaymentStatus() {
+    public function getPaymentStatus()
+    {
         return $this->paymentStatus;
     }
 
-    public function getPaymentMethod() {
+    public function getPaymentMethod()
+    {
         return $this->paymentMethod;
     }
 
-    public function setPaymentMethod($paymentMethod) {
+    public function setPaymentMethod($paymentMethod)
+    {
         $this->paymentMethod = $paymentMethod;
     }
 
-    public function getShippingAddress() {
+    public function getShippingAddress()
+    {
         return $this->shippingAddress;
     }
 
-    public function setShippingAddress($shippingAddress) {
+    public function setShippingAddress($shippingAddress)
+    {
         $this->shippingAddress = $shippingAddress;
     }
 
-    public function getTrackingNumber() {
+    public function getTrackingNumber()
+    {
         return $this->trackingNumber;
     }
 
-    public function setTrackingNumber($trackingNumber) {
+    public function setTrackingNumber($trackingNumber)
+    {
         $this->trackingNumber = $trackingNumber;
     }
 
-    public function getEstimatedDelivery() {
+    public function getEstimatedDelivery()
+    {
         return $this->estimatedDelivery;
     }
 
-    public function setEstimatedDelivery($estimatedDelivery) {
+    public function setEstimatedDelivery($estimatedDelivery)
+    {
         $this->estimatedDelivery = $estimatedDelivery;
     }
 
-    public function getNotes() {
+    public function getNotes()
+    {
         return $this->notes;
     }
 
-    public function setNotes($notes) {
+    public function setNotes($notes)
+    {
         $this->notes = $notes;
     }
 
     // Get order by ID
-    public static function getByID($orderID) {
+    public static function getByID($orderID)
+    {
         try {
             $orders = readJsonFile(ORDERS_FILE);
             if ($orders === false || !isset($orders['orders'])) {
                 return null;
             }
-            
+
             // Search through all orders
             foreach ($orders['orders'] as $order) {
                 if (isset($order['orderID']) && $order['orderID'] === $orderID) {
                     return new Orders($order);
                 }
             }
-            
+
             return null;
         } catch (Exception $e) {
             error_log("Error getting order by ID: " . $e->getMessage());
@@ -247,7 +279,8 @@ class Orders {
     }
 
     // Get orders by customer ID
-    public static function getByCustomerID($customerID) {
+    public static function getByCustomerID($customerID)
+    {
         try {
             $orders = readJsonFile(ORDERS_FILE);
             if (!isset($orders['orders'])) {
@@ -260,7 +293,9 @@ class Orders {
                     $customerOrders[] = new Orders($orderData);
                 }
             }
+
             return $customerOrders;
+
         } catch (Exception $e) {
             error_log("Error getting orders by customer ID: " . $e->getMessage());
             return [];

@@ -68,4 +68,5 @@ if ($order->cancelOrder()) {
     ];
     header('Location: view-order.php?order_id=' . urlencode($orderID));
     exit();
-}    padding: 1rem 1.5rem;    font-size: 1rem;    transition: all 0.3s ease;    min-width: 140px;}.action-buttons .btn:hover {
+}
+

@@ -139,12 +139,6 @@ class Inventory
         return $this->quantity;
     }
 
-    public function setQuantity($quantity)
-    {
-        $this->quantity = $quantity;
-        return $this->save();
-    }
-
     public function getReorderLevel()
     {
         return $this->reorderLevel;
@@ -159,12 +153,6 @@ class Inventory
     public function getLastRestockDate()
     {
         return $this->lastRestockDate;
-    }
-
-    public function setLastRestockDate($lastRestockDate)
-    {
-        $this->lastRestockDate = $lastRestockDate;
-        return $this->save();
     }
 
     public function getLocation()

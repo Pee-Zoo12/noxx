@@ -114,6 +114,27 @@
                 "street": "t"
             },
             "paymentMethod": "e_money"
+        },
+        "USR1748149516": {
+            "shippingID": null,
+            "shippingType": null,
+            "shippingCost": null,
+            "shippingAddress": null,
+            "paymentMethod": null
+        },
+        "USR1748151969": {
+            "shippingID": "6832bbfc90b0f",
+            "shippingType": "express",
+            "shippingCost": 50,
+            "shippingAddress": {
+                "island_group": "visayas",
+                "region": "5",
+                "province": "5",
+                "city": "5",
+                "barangay": "5",
+                "street": "5"
+            },
+            "paymentMethod": "cod"
         }
     },
     "user_682452225a60f": [],
@@ -273,5 +294,14 @@
     },
     "USR1747924699": [],
     "USR1747927441": [],
-    "USR1747929123": []
+    "USR1747929123": [],
+    "USR1748149516": [
+        {
+            "cartItemID": "6832a53d59b16",
+            "productID": "2",
+            "quantity": 1,
+            "dateAdded": "2025-05-25 07:06:05"
+        }
+    ],
+    "USR1748151969": []
 }
